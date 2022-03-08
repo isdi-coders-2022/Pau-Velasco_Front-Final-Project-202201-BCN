@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
