@@ -6,7 +6,9 @@ import {
   faShareNodes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Player } from "../../Interfaces/PlayerInterface";
 
 const HeaderContainer = styled.div`
   background-color: #fff;
@@ -102,7 +104,23 @@ const Options = styled.div`
   }
 `;
 
-const PlayerCard = (): JSX.Element => {
+interface PlayerCardProps {
+  player: Player;
+}
+
+const PlayerCard = ({
+  player: {
+    name,
+    number,
+    goals,
+    assists,
+    yellowCards,
+    redCards,
+    totalMatches,
+    position,
+    photo,
+  },
+}: PlayerCardProps): JSX.Element => {
   return (
     <>
       <section>
@@ -144,8 +162,10 @@ const PlayerCard = (): JSX.Element => {
             </li>
           </ul>
           <Options>
-            <FontAwesomeIcon icon={faPencil} />
-            <FontAwesomeIcon icon={faTrashCan} />
+            <Link to="/edit-player">
+              <FontAwesomeIcon icon={faPencil} />
+            </Link>
+            <FontAwesomeIcon icon={faTrashCan} onClick={actionOnClick} />
           </Options>
         </StatsContainer>
       </section>

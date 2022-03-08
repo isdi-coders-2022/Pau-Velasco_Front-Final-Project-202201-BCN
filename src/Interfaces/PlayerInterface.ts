@@ -7,4 +7,5 @@ export interface Player {
   redCards: number;
   totalMatches: number;
   position: string;
+  photo: string;
 }
