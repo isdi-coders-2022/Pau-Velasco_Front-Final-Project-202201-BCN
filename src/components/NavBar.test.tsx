@@ -20,4 +20,18 @@ describe("Given a NavBar component", () => {
       expect(findAddPlayer).toBeInTheDocument();
     });
   });
+
+  test("Then it should render three list items", () => {
+    render(
+      <BrowserRouter>
+        <NavBar />
+      </BrowserRouter>
+    );
+
+    const findLi = screen.getAllByRole("listitem");
+
+    expect(findLi[0]).toBeInTheDocument();
+    expect(findLi[1]).toBeInTheDocument();
+    expect(findLi[2]).toBeInTheDocument();
+  });
 });
