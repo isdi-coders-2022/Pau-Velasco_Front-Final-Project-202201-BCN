@@ -104,6 +104,10 @@ const Options = styled.div`
   & svg {
     padding: 10px;
   }
+
+  & a {
+    color: #000;
+  }
 `;
 
 interface PlayerCardProps {
