@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import NavBar from "./components/NavBar/NavBar";
+import PlayerCard from "./components/PlayerCard/PlayerCard";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<NavBar />} />
+      <Route path="/" element={<PlayerCard />} />
     </Routes>
   );
 }
