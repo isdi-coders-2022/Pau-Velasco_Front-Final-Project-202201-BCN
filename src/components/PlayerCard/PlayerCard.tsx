@@ -157,7 +157,7 @@ const PlayerCard = ({
             </li>
             <li>
               <FontAwesomeIcon icon={faLocationCrosshairs} />
-              <p>POSICION: {position}</p>
+              <p>POSICIóN: {position}</p>
             </li>
           </ul>
           <Options>
