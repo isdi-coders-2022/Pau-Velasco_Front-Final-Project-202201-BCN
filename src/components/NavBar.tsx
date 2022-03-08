@@ -4,6 +4,7 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ListItem = styled.li`
@@ -67,16 +68,22 @@ const NavBar = (): JSX.Element => {
       <NavigationContainer>
         <ListContainer>
           <ListItem>
-            <FontAwesomeIcon icon={faArrowRightToBracket} />
-            <p>logout</p>
+            <Link to="/login">
+              <FontAwesomeIcon icon={faArrowRightToBracket} />
+              <p>logout</p>
+            </Link>
           </ListItem>
           <ListItem>
-            <FontAwesomeIcon icon={faUsers} />
-            <p>mi equipo</p>
+            <Link to="/mi-equipo">
+              <FontAwesomeIcon icon={faUsers} />
+              <p>mi equipo</p>
+            </Link>
           </ListItem>
           <ListItem>
-            <FontAwesomeIcon icon={faUserPlus} />
-            <p>añadir jugador</p>
+            <Link to="/add-player">
+              <FontAwesomeIcon icon={faUserPlus} />
+              <p>añadir jugador</p>
+            </Link>
           </ListItem>
         </ListContainer>
       </NavigationContainer>
