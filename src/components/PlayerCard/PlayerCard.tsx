@@ -16,6 +16,7 @@ const HeaderContainer = styled.div`
   display: flex;
   border-radius: 3px;
   max-width: 350px;
+  text-transform: uppercase;
 
   & img {
     width: 50px;
@@ -46,6 +47,7 @@ const StatsContainer = styled.div`
   max-width: 350px;
   padding: 5px 15px;
   margin: 0;
+  text-transform: uppercase;
 
   & ul {
     margin: 0;
@@ -125,47 +127,44 @@ const PlayerCard = ({
     <>
       <section>
         <HeaderContainer>
-          <img
-            src="https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36"
-            alt=""
-          />
+          <img src={photo} alt={name} />
           <div>
-            <p>RONALDO</p>
-            <p>DORSAL: 7</p>
+            <p>{name}</p>
+            <p>DORSAL: {number}</p>
           </div>
         </HeaderContainer>
         <StatsContainer>
           <ul>
             <li>
               <FontAwesomeIcon icon={faFutbol} />
-              <p>GOLES: 12</p>
+              <p>GOLES: {goals}</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faShareNodes} />
-              <p>ASSISTENCIAS: 7</p>
+              <p>ASSISTENCIAS: {assists}</p>
             </li>
             <li>
               <YellowCard />
-              <p>TARJETAS AMARILLAS: 2</p>
+              <p>TARJETAS AMARILLAS: {yellowCards}</p>
             </li>
             <li>
               <RedCard />
-              <p>TARJETAS ROJAS: 0</p>
+              <p>TARJETAS ROJAS: {redCards}</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faPlayCircle} />
-              <p>PARTIDOS JUGADOS: 21</p>
+              <p>PARTIDOS JUGADOS: {totalMatches}</p>
             </li>
             <li>
               <FontAwesomeIcon icon={faLocationCrosshairs} />
-              <p>POSICION: ALERO</p>
+              <p>POSICION: {position}</p>
             </li>
           </ul>
           <Options>
             <Link to="/edit-player">
               <FontAwesomeIcon icon={faPencil} />
             </Link>
-            <FontAwesomeIcon icon={faTrashCan} onClick={actionOnClick} />
+            <FontAwesomeIcon icon={faTrashCan} />
           </Options>
         </StatsContainer>
       </section>
