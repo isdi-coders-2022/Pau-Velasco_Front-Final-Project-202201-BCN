@@ -23,6 +23,13 @@ const NavigationContainer = styled.nav`
   height: 50px;
   display: flex;
   justify-content: center;
+  background-color: grey;
+  @media (min-width: 400px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 25%;
+    min-height: 100vh;
+  }
 `;
 
 const NavBar = (): JSX.Element => {
