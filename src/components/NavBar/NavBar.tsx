@@ -27,6 +27,9 @@ const ListItem = styled.li`
       padding-left: 10px;
     }
   }
+  & a {
+    color: #000;
+  }
   & svg {
     @media (min-width: 400px) {
       padding-right: 20px;
