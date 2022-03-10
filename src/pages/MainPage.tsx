@@ -46,7 +46,7 @@ const MainPageContainer = styled.div`
   }
 `;
 
-const MainPage = () => {
+const MainPage = (): JSX.Element => {
   return (
     <>
       <MainPageContainer>
