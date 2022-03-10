@@ -1,9 +1,7 @@
-import { Player } from "./PlayerInterface";
-
 export interface User {
   username: string;
   teamName: string;
   password: string;
-  players: Player[];
+  players: String[];
   id: string;
 }
