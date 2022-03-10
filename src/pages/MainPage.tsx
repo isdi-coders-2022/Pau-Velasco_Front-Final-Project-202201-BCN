@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PlayerCard from "../components/PlayerCard/PlayerCard";
 
 const players = [
   {
@@ -41,6 +42,7 @@ const MainPageContainer = styled.div`
     text-align: center;
     margin: 0;
     background-color: #fca311;
+    margin-bottom: 30px;
   }
 `;
 
@@ -49,6 +51,9 @@ const MainPage = () => {
     <>
       <MainPageContainer>
         <h2>NOMBRE DEL EQUIPO</h2>
+        {players.map((player) => (
+          <PlayerCard player={player} actionOnClick={() => {}} />
+        ))}
       </MainPageContainer>
     </>
   );

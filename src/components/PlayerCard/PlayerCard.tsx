@@ -10,6 +10,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Player } from "../../Interfaces/PlayerInterface";
 
+const CardContainer = styled.section`
+  margin-top: 24px;
+`;
+
 const HeaderContainer = styled.div`
   background-color: #fff;
   padding: 10px;
@@ -131,7 +135,7 @@ const PlayerCard = ({
 }: PlayerCardProps): JSX.Element => {
   return (
     <>
-      <section>
+      <CardContainer>
         <HeaderContainer>
           <img src={photo} alt={name} />
           <div>
@@ -173,7 +177,7 @@ const PlayerCard = ({
             <FontAwesomeIcon icon={faTrashCan} onClick={actionOnClick} />
           </Options>
         </StatsContainer>
-      </section>
+      </CardContainer>
     </>
   );
 };
