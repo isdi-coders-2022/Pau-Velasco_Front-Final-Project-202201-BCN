@@ -13,6 +13,7 @@ const players = [
     position: "Alero",
     photo:
       "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+    id: 1,
   },
   {
     name: "Cristiano",
@@ -25,6 +26,7 @@ const players = [
     position: "Alero",
     photo:
       "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+    id: 2,
   },
 ];
 
@@ -52,7 +54,11 @@ const MainPage = (): JSX.Element => {
       <MainPageContainer>
         <h2>NOMBRE DEL EQUIPO</h2>
         {players.map((player) => (
-          <PlayerCard player={player} actionOnClick={() => {}} />
+          <PlayerCard
+            player={player}
+            actionOnClick={() => {}}
+            key={player.id}
+          />
         ))}
       </MainPageContainer>
     </>
