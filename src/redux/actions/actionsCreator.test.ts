@@ -1,5 +1,6 @@
+import { Player } from "../../Interfaces/PlayerInterface";
 import { User } from "../../Interfaces/UserInterface";
-import { loadUserAction } from "./actionsCreator";
+import { loadPlayersAction, loadUserAction } from "./actionsCreator";
 
 describe("Given a load user action", () => {
   describe("When it receives a user", () => {
@@ -19,6 +20,48 @@ describe("Given a load user action", () => {
       };
 
       const action = loadUserAction(user);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a load players action", () => {
+  describe("When it receives a list of players", () => {
+    test("Then it should return an action with type loadPlayers and the list of players", () => {
+      const players: Player[] = [
+        {
+          name: "Cristiano",
+          number: 7,
+          goals: 12,
+          assists: 4,
+          yellowCards: 4,
+          redCards: 0,
+          totalMatches: 21,
+          position: "Alero",
+          photo: "photo.jpg",
+          id: "1",
+        },
+        {
+          name: "Messi",
+          number: 7,
+          goals: 12,
+          assists: 4,
+          yellowCards: 4,
+          redCards: 0,
+          totalMatches: 21,
+          position: "Alero",
+          photo: "photo.jpg",
+          id: "1",
+        },
+      ];
+
+      const expectedAction = {
+        type: "load-players",
+        players,
+      };
+
+      const action = loadPlayersAction(players);
 
       expect(action).toEqual(expectedAction);
     });

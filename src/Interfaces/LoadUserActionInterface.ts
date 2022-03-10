@@ -1,6 +1,6 @@
 import { User } from "./UserInterface";
 
-export interface LoadUser {
+export interface LoadUserAction {
   type: string;
   user: User;
 }
