@@ -13,7 +13,7 @@ const players = [
     position: "Alero",
     photo:
       "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
-    id: 1,
+    id: "1",
   },
   {
     name: "Cristiano",
@@ -26,7 +26,7 @@ const players = [
     position: "Alero",
     photo:
       "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
-    id: 2,
+    id: "2",
   },
 ];
 
