@@ -31,12 +31,25 @@ const MainPageContainer = styled.div`
   background: linear-gradient(193.32deg, #14213d 45.83%, #000000 100%);
   width: 100;
   min-height: 100vh;
+  padding: 7px;
+
+  & h2 {
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 0;
+    background-color: #fca311;
+  }
 `;
 
 const MainPage = () => {
   return (
     <>
-      <MainPageContainer></MainPageContainer>
+      <MainPageContainer>
+        <h2>NOMBRE DEL EQUIPO</h2>
+      </MainPageContainer>
     </>
   );
 };
