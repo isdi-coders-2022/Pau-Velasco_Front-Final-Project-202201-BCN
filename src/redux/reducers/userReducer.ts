@@ -1,6 +1,6 @@
-import { LoadUser } from "../../Interfaces/LoadUserActionInterface";
 import { User } from "../../Interfaces/UserInterface";
 import actionsTypes from "../actions/actionsTypes";
+import { LoadUserAction } from "../../Interfaces/LoadUserActionInterface";
 
 const initialUserAction = {
   type: "",
@@ -23,7 +23,7 @@ const initialUser = {
 
 const userReducer = (
   user: User = initialUser,
-  action: LoadUser = initialUserAction
+  action: LoadUserAction = initialUserAction
 ): User => {
   let newUser;
 
