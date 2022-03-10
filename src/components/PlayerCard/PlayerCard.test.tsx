@@ -15,6 +15,7 @@ describe("Given a PlayerCard component", () => {
         totalMatches: 21,
         position: "Alero",
         photo: "photo.jpg",
+        id: "1",
       };
       render(
         <BrowserRouter>
