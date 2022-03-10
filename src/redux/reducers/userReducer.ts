@@ -29,7 +29,7 @@ const userReducer = (
 
   switch (action.type) {
     case actionsTypes.loadUser:
-      newUser = { ...user };
+      newUser = { ...action.user };
       break;
     default:
       newUser = { ...user };
