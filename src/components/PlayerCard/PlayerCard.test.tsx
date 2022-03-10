@@ -18,7 +18,7 @@ describe("Given a PlayerCard component", () => {
       };
       render(
         <BrowserRouter>
-          <PlayerCard player={player} />
+          <PlayerCard player={player} actionOnClick={() => {}} />
         </BrowserRouter>
       );
 
