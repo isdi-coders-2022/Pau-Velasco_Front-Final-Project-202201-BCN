@@ -54,6 +54,7 @@ const ListContainer = styled.ul`
 
 const NavigationContainer = styled.nav`
   height: 50px;
+  min-width: 200px;
   display: flex;
   justify-content: center;
   @media (min-width: 400px) {

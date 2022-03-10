@@ -19,7 +19,7 @@ const HeaderContainer = styled.div`
   padding: 10px;
   display: flex;
   border-radius: 3px;
-  max-width: 350px;
+  width: 350px;
   text-transform: uppercase;
 
   & img {
