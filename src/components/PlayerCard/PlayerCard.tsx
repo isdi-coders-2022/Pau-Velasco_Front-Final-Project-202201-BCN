@@ -111,10 +111,12 @@ const Options = styled.div`
 `;
 
 interface PlayerCardProps {
+  actionOnClick: () => void;
   player: Player;
 }
 
 const PlayerCard = ({
+  actionOnClick,
   player: {
     name,
     number,
@@ -168,7 +170,7 @@ const PlayerCard = ({
             <Link to="/edit-player">
               <FontAwesomeIcon icon={faPencil} />
             </Link>
-            <FontAwesomeIcon icon={faTrashCan} />
+            <FontAwesomeIcon icon={faTrashCan} onClick={actionOnClick} />
           </Options>
         </StatsContainer>
       </section>
