@@ -1,6 +1,4 @@
-import { User } from "../../Interfaces/UserInterface";
 import actionsTypes from "../actions/actionsTypes";
-import { LoadUserAction } from "../../Interfaces/LoadUserActionInterface";
 import { Player } from "../../Interfaces/PlayerInterface";
 import { LoadPlayersAction } from "../../Interfaces/LoadPlayersActionInterface";
 
@@ -22,7 +20,7 @@ const initialPlayersAction = {
   ],
 };
 
-const initialPlayer = [
+const initialPlayers = [
   {
     name: "",
     number: 0,
@@ -38,7 +36,7 @@ const initialPlayer = [
 ];
 
 const playersReducer = (
-  players: Player[] = initialPlayer,
+  players: Player[] = initialPlayers,
   action: LoadPlayersAction = initialPlayersAction
 ): Player[] => {
   let newPlayer;
