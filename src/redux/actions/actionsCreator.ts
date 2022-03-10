@@ -1,7 +1,7 @@
-import { Player } from "../../Interfaces/PlayerInterface";
+import { User } from "../../Interfaces/UserInterface";
 import actionsTypes from "./actionsTypes";
 
-export const loadUserAction = (user: Player) => ({
+export const loadUserAction = (user: User) => ({
   type: actionsTypes.loadUser,
   user,
 });
