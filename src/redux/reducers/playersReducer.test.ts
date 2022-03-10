@@ -1,3 +1,4 @@
+import exp from "constants";
 import playersReducer from "./playersReducer";
 
 describe("Given a playersReducer reducer", () => {
@@ -51,6 +52,29 @@ describe("Given a playersReducer reducer", () => {
       const newPlayers = playersReducer(initialPlayers, action);
 
       expect(newPlayers).toEqual(expectedPlayers);
+    });
+  });
+
+  describe("When it doesn't receives any playres and action", () => {
+    test("Then it should return the initialPlayers array", () => {
+      const initialPlayers = [
+        {
+          name: "",
+          number: 0,
+          goals: 0,
+          assists: 0,
+          yellowCards: 0,
+          redCards: 0,
+          totalMatches: 0,
+          position: "",
+          photo: "",
+          id: "",
+        },
+      ];
+
+      const newPlayers = playersReducer();
+
+      expect(newPlayers).toEqual(initialPlayers);
     });
   });
 });
