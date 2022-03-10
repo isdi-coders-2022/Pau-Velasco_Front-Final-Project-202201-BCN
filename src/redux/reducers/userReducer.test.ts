@@ -29,4 +29,31 @@ describe("Given a userReducer reducer", () => {
       expect(newUser).toEqual(expectedUser);
     });
   });
+
+  describe("When it doesn't receives user or action", () => {
+    test("Then it should return the user", () => {
+      const emptyAction = {
+        type: "",
+        user: {
+          username: "",
+          teamName: "",
+          password: "",
+          players: [],
+          id: "",
+        },
+      };
+
+      const user = {
+        username: "",
+        teamName: "",
+        password: "",
+        players: [],
+        id: "",
+      };
+
+      const newUser = userReducer();
+
+      expect(newUser).toEqual(user);
+    });
+  });
 });
