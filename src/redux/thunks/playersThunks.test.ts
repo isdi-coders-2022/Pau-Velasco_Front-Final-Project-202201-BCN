@@ -1,26 +1,13 @@
-import { rest } from "msw";
+import { loadPlayersThunk } from "./playersThunk";
+import { loadUserThunk } from "./userThunks";
 
-export const handlers = [
-  rest.get(
-    `${process.env.REACT_APP_API_RENDER}user/load-user`,
-    (req, res, ctx) =>
-      res(
-        ctx.status(200),
-        ctx.json({
-          username: "Cristiano",
-          teamName: "Man U",
-          password: "afjdsk",
-          players: [],
-          id: "1",
-        })
-      )
-  ),
-  rest.get(
-    `${process.env.REACT_APP_API_RENDER}user/load-user-players`,
-    (req, res, ctx) =>
-      res(
-        ctx.status(200),
-        ctx.json([
+describe("Given a loadPlayersThunk function", () => {
+  describe("When it's called", () => {
+    test("Then it should dispatch an loadUser action", async () => {
+      const dispatch = jest.fn();
+      const action = {
+        type: "load-players",
+        players: [
           {
             name: "Cristiano",
             number: 7,
@@ -47,7 +34,13 @@ export const handlers = [
               "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
             id: "2",
           },
-        ])
-      )
-  ),
-];
+        ],
+      };
+
+      const players = loadPlayersThunk();
+      await players(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
