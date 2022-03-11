@@ -1,5 +1,4 @@
 import { loadPlayersThunk } from "./playersThunk";
-import { loadUserThunk } from "./userThunks";
 
 describe("Given a loadPlayersThunk function", () => {
   describe("When it's called", () => {
