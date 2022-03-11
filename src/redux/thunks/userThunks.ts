@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+import { User } from "../../Interfaces/UserInterface";
 import { loadUserAction } from "../actions/actionsCreator";
 
 const url: string = `${process.env.REACT_APP_API_RENDER}user/load-user`;
@@ -11,6 +12,6 @@ export const loadUserThunk = () => async (dispatch: Dispatch) => {
     },
   });
 
-  const user: any = await response.json();
+  const user: User = await response.json();
   return dispatch(loadUserAction(user));
 };
