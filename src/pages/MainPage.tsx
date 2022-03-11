@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import PlayerCard from "../components/PlayerCard/PlayerCard";
 import { Player } from "../Interfaces/PlayerInterface";
+import { State } from "../Interfaces/StateInterface";
 import { loadPlayersThunk } from "../redux/thunks/playersThunk";
 import { loadUserThunk } from "../redux/thunks/userThunks";
 
@@ -32,8 +33,8 @@ const PlayersContainer = styled.div`
 `;
 
 const MainPage = (): JSX.Element => {
-  const user = useSelector((state: any) => state.user);
-  const players = useSelector((state: any) => state.players);
+  const user = useSelector((state: State) => state.user);
+  const players = useSelector((state: State) => state.players);
   const dispatch = useDispatch();
 
   useEffect(() => {
