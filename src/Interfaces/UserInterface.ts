@@ -2,6 +2,6 @@ export interface User {
   username: string;
   teamName: string;
   password: string;
-  players: String[];
+  players: string[];
   id: string;
 }
