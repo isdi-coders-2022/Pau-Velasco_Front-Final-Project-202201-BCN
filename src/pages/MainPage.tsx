@@ -2,36 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import PlayerCard from "../components/PlayerCard/PlayerCard";
+import { Player } from "../Interfaces/PlayerInterface";
+import { loadPlayersThunk } from "../redux/thunks/playersThunk";
 import { loadUserThunk } from "../redux/thunks/userThunks";
-
-const players = [
-  {
-    name: "Cristiano",
-    number: 7,
-    goals: 21,
-    assists: 3,
-    yellowCards: 4,
-    redCards: 1,
-    totalMatches: 21,
-    position: "Alero",
-    photo:
-      "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
-    id: "1",
-  },
-  {
-    name: "Cristiano",
-    number: 7,
-    goals: 21,
-    assists: 3,
-    yellowCards: 4,
-    redCards: 1,
-    totalMatches: 21,
-    position: "Alero",
-    photo:
-      "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
-    id: "2",
-  },
-];
 
 const MainPageContainer = styled.div`
   background: linear-gradient(193.32deg, #14213d 45.83%, #000000 100%);
@@ -60,18 +33,20 @@ const PlayersContainer = styled.div`
 
 const MainPage = (): JSX.Element => {
   const user = useSelector((state: any) => state.user);
+  const players = useSelector((state: any) => state.players);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadUserThunk());
+    dispatch(loadPlayersThunk());
   }, [dispatch]);
-  console.log(user);
+
   return (
     <>
       <MainPageContainer>
         <h2>{user.teamName}</h2>
         <PlayersContainer>
-          {players.map((player) => (
+          {players.map((player: Player) => (
             <PlayerCard
               player={player}
               actionOnClick={() => {}}
