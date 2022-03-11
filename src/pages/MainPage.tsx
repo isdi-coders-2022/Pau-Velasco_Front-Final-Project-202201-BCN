@@ -1,5 +1,8 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import PlayerCard from "../components/PlayerCard/PlayerCard";
+import { loadUserThunk } from "../redux/thunks/userThunks";
 
 const players = [
   {
@@ -45,6 +48,7 @@ const MainPageContainer = styled.div`
     margin: 0;
     background-color: #fca311;
     margin-bottom: 30px;
+    text-transform: uppercase;
   }
 `;
 
@@ -55,10 +59,17 @@ const PlayersContainer = styled.div`
 `;
 
 const MainPage = (): JSX.Element => {
+  const user = useSelector((state: any) => state.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUserThunk());
+  }, [dispatch]);
+  console.log(user);
   return (
     <>
       <MainPageContainer>
-        <h2>NOMBRE DEL EQUIPO</h2>
+        <h2>{user.teamName}</h2>
         <PlayersContainer>
           {players.map((player) => (
             <PlayerCard
