@@ -18,6 +18,7 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
     "@types/styled-components": "^5.1.24",
+    "bson-objectid": "^2.0.2",
     "fishery": "^2.2.2",
     "jest": "^27.5.1",
     "msw": "^0.39.1",
