@@ -15,3 +15,7 @@ const playerFactory = Factory.define<Player>(() => ({
   photo: faker.image.imageUrl(),
   id: ObjectID().toHexString(),
 }));
+
+export const generateRandomPlayer = (): Player => playerFactory.build();
+export const generateRandomPlayers = (total: number): Player[] =>
+  playerFactory.buildList(total);
