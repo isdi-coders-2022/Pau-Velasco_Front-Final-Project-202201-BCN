@@ -10,3 +10,5 @@ const userFactory = Factory.define<User>(() => ({
   players: [],
   id: ObjectID().toHexString(),
 }));
+
+export const generateRandomUser = (): User => userFactory.build();
