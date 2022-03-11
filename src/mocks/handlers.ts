@@ -6,22 +6,13 @@ export const handlers = [
     (req, res, ctx) =>
       res(
         ctx.status(200),
-        ctx.json([
-          {
-            username: "Cristiano",
-            teamName: "Man U",
-            password: "afjdsk",
-            players: [],
-            id: "2",
-          },
-          {
-            username: "Messi",
-            teamName: "PSG",
-            password: "afjdsk",
-            players: [],
-            id: "1",
-          },
-        ])
+        ctx.json({
+          username: "Cristiano",
+          teamName: "Man U",
+          password: "afjdsk",
+          players: [],
+          id: "1",
+        })
       )
   ),
 ];
