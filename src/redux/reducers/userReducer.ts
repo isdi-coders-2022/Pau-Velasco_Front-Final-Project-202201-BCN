@@ -1,35 +1,17 @@
 import { User } from "../../Interfaces/UserInterface";
 import actionsTypes from "../actions/actionsTypes";
 import { LoadUserAction } from "../../Interfaces/LoadUserActionInterface";
-
-const initialUserAction = {
-  type: "",
-  user: {
-    username: "",
-    teamName: "",
-    password: "",
-    players: [],
-    id: "",
-  },
-};
-
-const initialUser = {
-  username: "",
-  teamName: "",
-  password: "",
-  players: [],
-  id: "",
-};
+import { EmptyObject } from "redux";
 
 const userReducer = (
-  user: User = initialUser,
-  action: LoadUserAction = initialUserAction
-): User => {
+  user: User | EmptyObject = {},
+  action: LoadUserAction | EmptyObject = {}
+): User | EmptyObject => {
   let newUser;
 
-  switch (action.type) {
+  switch ((action as LoadUserAction).type) {
     case actionsTypes.loadUser:
-      newUser = { ...action.user };
+      newUser = { ...(action as LoadUserAction).user };
       break;
     default:
       newUser = { ...user };
