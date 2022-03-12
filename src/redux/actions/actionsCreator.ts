@@ -3,7 +3,6 @@ import { LoadPlayersAction } from "../../Interfaces/LoadPlayersActionInterface";
 import { Player } from "../../Interfaces/PlayerInterface";
 import { User } from "../../Interfaces/UserInterface";
 import actionsTypes from "./actionsTypes";
-import ObjectID from "bson-objectid";
 import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface";
 
 export const loadUserAction = (user: User): LoadUserAction => ({
@@ -16,7 +15,7 @@ export const loadPlayersAction = (players: Player[]): LoadPlayersAction => ({
   players,
 });
 
-export const deletePlayerAction = (id: ObjectID): DeletePlayerAction => ({
+export const deletePlayerAction = (id: string): DeletePlayerAction => ({
   type: actionsTypes.deletePlayer,
   id,
 });
