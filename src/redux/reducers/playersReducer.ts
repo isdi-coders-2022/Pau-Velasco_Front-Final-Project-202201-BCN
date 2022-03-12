@@ -1,49 +1,17 @@
 import actionsTypes from "../actions/actionsTypes";
 import { Player } from "../../Interfaces/PlayerInterface";
 import { LoadPlayersAction } from "../../Interfaces/LoadPlayersActionInterface";
-
-const initialPlayersAction = {
-  type: "",
-  players: [
-    {
-      name: "",
-      number: 0,
-      goals: 0,
-      assists: 0,
-      yellowCards: 0,
-      redCards: 0,
-      totalMatches: 0,
-      position: "",
-      photo: "",
-      id: "",
-    },
-  ],
-};
-
-const initialPlayers = [
-  {
-    name: "",
-    number: 0,
-    goals: 0,
-    assists: 0,
-    yellowCards: 0,
-    redCards: 0,
-    totalMatches: 0,
-    position: "",
-    photo: "",
-    id: "",
-  },
-];
+import { EmptyObject } from "redux";
 
 const playersReducer = (
-  players: Player[] = initialPlayers,
-  action: LoadPlayersAction = initialPlayersAction
+  players: Player[] = [],
+  action: LoadPlayersAction | EmptyObject = {}
 ): Player[] => {
   let newPlayer;
 
-  switch (action.type) {
+  switch ((action as LoadPlayersAction).type) {
     case actionsTypes.loadPlayers:
-      newPlayer = [...action.players];
+      newPlayer = [...(action as LoadPlayersAction).players];
       break;
     default:
       newPlayer = [...players];
