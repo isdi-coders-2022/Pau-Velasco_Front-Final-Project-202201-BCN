@@ -1,4 +1,4 @@
-import { loadPlayersThunk } from "./playersThunk";
+import { deletePlayerThunk, loadPlayersThunk } from "./playersThunk";
 
 describe("Given a loadPlayersThunk function", () => {
   describe("When it's called", () => {
@@ -40,6 +40,23 @@ describe("Given a loadPlayersThunk function", () => {
       await players(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
+
+describe("Given a deletePlayer thunk", () => {
+  describe("When it's called with a player id", () => {
+    test("Then it should call the dispatch with an action", async () => {
+      const dispatch = jest.fn();
+      const action = {
+        type: "delete-player",
+        id: "1",
+      };
+
+      const deletedPlayer = deletePlayerThunk(action.id);
+      await deletedPlayer(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
