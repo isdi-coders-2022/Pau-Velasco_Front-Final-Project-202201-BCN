@@ -16,7 +16,6 @@ const playersReducer = (
       newPlayers = [...(action as LoadPlayersAction).players];
       break;
     case actionsTypes.deletePlayer:
-      console.log("ENTROOO");
       newPlayers = players.filter(
         (player) => player.id !== (action as DeletePlayerAction).id
       );
