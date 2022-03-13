@@ -5,7 +5,7 @@ import {
   loadPlayersAction,
 } from "../actions/actionsCreator";
 
-const url: string = process.env.REACT_APP_API_RENDER;
+const url = process.env.REACT_APP_API_RENDER;
 
 export const loadPlayersThunk = () => async (dispatch: Dispatch) => {
   const response = await fetch(`${url}user/load-user-players`, {
