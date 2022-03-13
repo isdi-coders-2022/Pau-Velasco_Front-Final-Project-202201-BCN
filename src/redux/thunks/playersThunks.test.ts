@@ -59,15 +59,4 @@ describe("Given a deletePlayer thunk", () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
-
-  describe("When it's called with a bad req", () => {
-    test("Then it shouldn't call the dispatch with an action", async () => {
-      const dispatch = jest.fn();
-
-      const deletedPlayer = deletePlayerThunk("234");
-      await deletedPlayer(dispatch);
-
-      expect(dispatch).not.toHaveBeenCalled();
-    });
-  });
 });

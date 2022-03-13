@@ -5,12 +5,12 @@ import { Player } from "../Interfaces/PlayerInterface";
 
 const playerFactory = Factory.define<Player>(() => ({
   name: faker.name.findName(),
-  number: faker.random.number({ min: 1, max: 99 }),
-  goals: faker.random.number({ min: 1, max: 200 }),
-  assists: faker.random.number({ min: 1, max: 100 }),
-  yellowCards: faker.random.number({ min: 1, max: 20 }),
-  redCards: faker.random.number({ min: 1, max: 20 }),
-  totalMatches: faker.random.number({ min: 1, max: 50 }),
+  number: faker.datatype.number({ min: 1, max: 99 }),
+  goals: faker.datatype.number({ min: 1, max: 200 }),
+  assists: faker.datatype.number({ min: 1, max: 100 }),
+  yellowCards: faker.datatype.number({ min: 1, max: 20 }),
+  redCards: faker.datatype.number({ min: 1, max: 20 }),
+  totalMatches: faker.datatype.number({ min: 1, max: 50 }),
   position: "Alero",
   photo: faker.image.imageUrl(),
   id: ObjectID().toHexString(),
