@@ -4,7 +4,10 @@ import styled from "styled-components";
 import PlayerCard from "../components/PlayerCard/PlayerCard";
 import { Player } from "../Interfaces/PlayerInterface";
 import { State } from "../Interfaces/StateInterface";
-import { loadPlayersThunk } from "../redux/thunks/playersThunk";
+import {
+  deletePlayerThunk,
+  loadPlayersThunk,
+} from "../redux/thunks/playersThunk";
 import { loadUserThunk } from "../redux/thunks/userThunks";
 
 const MainPageContainer = styled.div`
@@ -50,7 +53,9 @@ const MainPage = (): JSX.Element => {
           {players.map((player: Player) => (
             <PlayerCard
               player={player}
-              actionOnClick={() => {}}
+              actionOnClick={() => {
+                dispatch(deletePlayerThunk(player.id));
+              }}
               key={player.id}
             />
           ))}
