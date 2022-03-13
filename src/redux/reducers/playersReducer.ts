@@ -3,27 +3,29 @@ import { Player } from "../../Interfaces/PlayerInterface";
 import { LoadPlayersAction } from "../../Interfaces/LoadPlayersActionInterface";
 import { EmptyObject } from "redux";
 import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface";
+import { Action } from "../../Interfaces/ActionInterface";
 
 const playersReducer = (
   players: Player[] = [],
-  action: LoadPlayersAction | EmptyObject = {}
+  action: Action | EmptyObject = {}
 ): Player[] => {
-  let newPlayer;
+  let newPlayers;
 
-  switch ((action as LoadPlayersAction).type) {
+  switch ((action as Action).type) {
     case actionsTypes.loadPlayers:
-      newPlayer = [...(action as LoadPlayersAction).players];
+      newPlayers = [...(action as LoadPlayersAction).players];
       break;
     case actionsTypes.deletePlayer:
-      newPlayer = players.filter(
+      console.log("ENTROOO");
+      newPlayers = players.filter(
         (player) => player.id !== (action as DeletePlayerAction).id
       );
       break;
     default:
-      newPlayer = [...players];
+      newPlayers = [...players];
       break;
   }
-  return newPlayer;
+  return newPlayers;
 };
 
 export default playersReducer;

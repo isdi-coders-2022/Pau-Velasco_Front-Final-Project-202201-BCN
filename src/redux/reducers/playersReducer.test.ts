@@ -1,3 +1,4 @@
+import { generateRandomPlayers } from "../../mocks/playerFactory";
 import playersReducer from "./playersReducer";
 
 describe("Given a playersReducer reducer", () => {
@@ -59,6 +60,20 @@ describe("Given a playersReducer reducer", () => {
       const newPlayers = playersReducer();
 
       expect(newPlayers).toEqual([]);
+    });
+  });
+
+  describe("When it receives a list of players and a delete-player action with a player id", () => {
+    test("Then it should delete the player with the id from the list of players", () => {
+      const players = generateRandomPlayers(3);
+      const deleteAction = {
+        type: "delete-player",
+        id: players[1].id,
+      };
+
+      const newPlayers = playersReducer(players, deleteAction);
+
+      expect(newPlayers).toHaveLength(players.length - 1);
     });
   });
 });
