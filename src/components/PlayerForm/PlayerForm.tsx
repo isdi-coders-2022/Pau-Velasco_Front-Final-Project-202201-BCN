@@ -127,6 +127,9 @@ const PlayerForm = () => {
             />
           </div>
         </div>
+        <button type="submit" disabled={isInvalid}>
+          CREAR
+        </button>
       </form>
     </>
   );
