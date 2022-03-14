@@ -2,6 +2,8 @@ import { CreatedPlayer } from "../../Interfaces/PlayerInterface";
 import { useState } from "react";
 
 const PlayerForm = () => {
+  const [formData, setFormData] = useState(blankFields);
+
   const blankFields: CreatedPlayer = {
     name: "",
     number: 0,
@@ -13,24 +15,35 @@ const PlayerForm = () => {
     totalMatches: 0,
     position: "",
   };
-  const [formData, setFormData] = useState(blankFields);
+  const isInvalid =
+    formData.name === "" ||
+    formData.number === null ||
+    formData.photo === "" ||
+    formData.goals === null ||
+    formData.assists === null ||
+    formData.yellowCards === null ||
+    formData.redCards === null ||
+    formData.totalMatches === null ||
+    formData.position === "";
 
-  const changeData = (event) => {
+  const changeData = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
-  const changeFile = (event) => {
+  const changeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, photo: event.target.files[0] });
   };
 
-  const submitForm = (event) => {
+  const submitForm = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
   };
   return (
     <>
-      <form noValidate autoComplete="off">
+      <form noValidate autoComplete="off" onSubmit={submitForm}>
         <div>
           <div>
-            <label htmlFor="name">NOMBRE DEL JUGADOR</label>
+            <label htmlFor="name" onChange={changeData.name}>
+              NOMBRE DEL JUGADOR
+            </label>
             <input type="text" id="name" />
           </div>
           <div>
