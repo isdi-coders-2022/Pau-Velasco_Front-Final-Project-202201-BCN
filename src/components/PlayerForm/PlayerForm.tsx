@@ -21,6 +21,10 @@ const PlayerForm = () => {
   const changeFile = (event) => {
     setFormData({ ...formData, photo: event.target.files[0] });
   };
+
+  const submitForm = (event) => {
+    event.preventDefault();
+  };
   return (
     <>
       <form noValidate autoComplete="off">
