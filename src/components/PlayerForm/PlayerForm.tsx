@@ -2,8 +2,6 @@ import { CreatedPlayer } from "../../Interfaces/PlayerInterface";
 import { useState } from "react";
 
 const PlayerForm = () => {
-  const [formData, setFormData] = useState(blankFields);
-
   const blankFields: CreatedPlayer = {
     name: "",
     number: 0,
@@ -15,6 +13,7 @@ const PlayerForm = () => {
     totalMatches: 0,
     position: "",
   };
+  const [formData, setFormData] = useState(blankFields);
   const isInvalid =
     formData.name === "" ||
     formData.number === null ||
@@ -30,21 +29,28 @@ const PlayerForm = () => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
   const changeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, photo: event.target.files[0] });
+    setFormData({
+      ...formData,
+      [event.target.id]: (event.target.files as FileList)[0],
+    });
   };
 
-  const submitForm = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const submitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+
   return (
     <>
       <form noValidate autoComplete="off" onSubmit={submitForm}>
         <div>
           <div>
-            <label htmlFor="name" onChange={changeData.name}>
-              NOMBRE DEL JUGADOR
-            </label>
-            <input type="text" id="name" />
+            <label htmlFor="name">NOMBRE DEL JUGADOR</label>
+            <input
+              type="text"
+              id="name"
+              value={formData.name}
+              onChange={changeData}
+            />
           </div>
           <div>
             <label htmlFor="number">DORSAL</label>
@@ -52,7 +58,12 @@ const PlayerForm = () => {
           </div>
           <div>
             <label htmlFor="photo"></label>
-            <input type="file" id="photo" name="photo" />
+            <input
+              type="file"
+              id="photo"
+              onChange={changeFile}
+              accept=".png .jpg"
+            />
           </div>
         </div>
         <div>
