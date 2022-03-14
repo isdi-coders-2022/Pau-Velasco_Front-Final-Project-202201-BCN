@@ -54,7 +54,12 @@ const PlayerForm = () => {
           </div>
           <div>
             <label htmlFor="number">DORSAL</label>
-            <input type="number" id="number" />
+            <input
+              type="number"
+              id="number"
+              value={formData.number}
+              onChange={changeData}
+            />
           </div>
           <div>
             <label htmlFor="photo"></label>
@@ -69,27 +74,57 @@ const PlayerForm = () => {
         <div>
           <div>
             <label htmlFor="goals">GOLES</label>
-            <input type="number" id="goals" />
+            <input
+              type="number"
+              id="goals"
+              value={formData.goals}
+              onChange={changeData}
+            />
           </div>
           <div>
             <label htmlFor="assists">ASSISTS</label>
-            <input type="number" id="assists" />
+            <input
+              type="number"
+              id="assists"
+              value={formData.assists}
+              onChange={changeData}
+            />
           </div>
           <div>
             <label htmlFor="yellowCards">AMARIL</label>
-            <input type="number" id="yellowCards" />
+            <input
+              type="number"
+              id="yellowCards"
+              value={formData.yellowCards}
+              onChange={changeData}
+            />
           </div>
           <div>
             <label htmlFor="redCards">ROJAS</label>
-            <input type="number" id="redCards" />
+            <input
+              type="number"
+              id="redCards"
+              value={formData.redCards}
+              onChange={changeData}
+            />
           </div>
           <div>
             <label htmlFor="totalMatches">P. JUGADOS</label>
-            <input type="number" id="totalMatches" />
+            <input
+              type="number"
+              id="totalMatches"
+              value={formData.totalMatches}
+              onChange={changeData}
+            />
           </div>
           <div>
             <label htmlFor="position">POSICIÓN</label>
-            <input type="text" id="position" />
+            <input
+              type="text"
+              id="position"
+              value={formData.position}
+              onChange={changeData}
+            />
           </div>
         </div>
       </form>
