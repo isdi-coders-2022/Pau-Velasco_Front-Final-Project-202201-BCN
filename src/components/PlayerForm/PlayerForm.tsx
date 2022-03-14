@@ -1,4 +1,18 @@
+import { Player } from "../../Interfaces/PlayerInterface";
+
 const PlayerForm = () => {
+  const blankFields: Player = {
+    name: "",
+    number: 0,
+    photo: "",
+    goals: 0,
+    assists: 0,
+    yellowCards: 0,
+    redCards: 0,
+    totalMatches: 0,
+    position: "",
+  };
+
   return (
     <>
       <form noValidate autoComplete="off">
@@ -39,7 +53,7 @@ const PlayerForm = () => {
           </div>
           <div>
             <label htmlFor="position">POSICIÓN</label>
-            <input type="number" id="position" />
+            <input type="text" id="position" />
           </div>
         </div>
       </form>
