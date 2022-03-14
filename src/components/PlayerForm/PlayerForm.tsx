@@ -1,7 +1,8 @@
-import { Player } from "../../Interfaces/PlayerInterface";
+import { CreatedPlayer } from "../../Interfaces/PlayerInterface";
+import { useState } from "react";
 
 const PlayerForm = () => {
-  const blankFields: Player = {
+  const blankFields: CreatedPlayer = {
     name: "",
     number: 0,
     photo: "",
@@ -12,7 +13,11 @@ const PlayerForm = () => {
     totalMatches: 0,
     position: "",
   };
+  const [formData, setFormData] = useState(blankFields);
 
+  const changeData = (event) => {
+    setFormData({ ...formData, [event.target.id]: event.target.value });
+  };
   return (
     <>
       <form noValidate autoComplete="off">
