@@ -10,3 +10,15 @@ export interface Player {
   photo: string;
   id: string;
 }
+
+export interface CreatedPlayer {
+  name: string;
+  number: number;
+  goals: number;
+  assists: number;
+  yellowCards: number;
+  redCards: number;
+  totalMatches: number;
+  position: string;
+  photo: string;
+}
