@@ -13,7 +13,7 @@ const PlayerForm = () => {
           </div>
           <div>
             <label htmlFor="photo"></label>
-            <input type="text" id="photo" />
+            <input type="file" id="photo" name="photo" />
           </div>
         </div>
       </form>
