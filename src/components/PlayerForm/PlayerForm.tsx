@@ -18,6 +18,9 @@ const PlayerForm = () => {
   const changeData = (event) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
+  const changeFile = (event) => {
+    setFormData({ ...formData, photo: event.target.files[0] });
+  };
   return (
     <>
       <form noValidate autoComplete="off">
