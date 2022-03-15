@@ -1,4 +1,8 @@
-import { deletePlayerThunk, loadPlayersThunk } from "./playersThunk";
+import {
+  createPlayerThunk,
+  deletePlayerThunk,
+  loadPlayersThunk,
+} from "./playersThunk";
 
 describe("Given a loadPlayersThunk function", () => {
   describe("When it's called", () => {
@@ -55,6 +59,35 @@ describe("Given a deletePlayer thunk", () => {
 
       const deletedPlayer = deletePlayerThunk(action.id);
       await deletedPlayer(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a createPlayer thunk", () => {
+  describe("When it's called with a new player", () => {
+    test("Then it should call the dispatch with an createPlayerAction", async () => {
+      const dispatch = jest.fn();
+      const player = {
+        name: "Cristiano",
+        number: "7",
+        goals: "21",
+        assists: "3",
+        yellowCards: "4",
+        redCards: "1",
+        totalMatches: "21",
+        position: "Alero",
+        photo:
+          "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+      };
+      const action = {
+        type: "create-player",
+        player,
+      };
+
+      const createdPlayer = createPlayerThunk(action.player);
+      await createdPlayer(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });
