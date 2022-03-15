@@ -4,6 +4,7 @@ import { LoadPlayersAction } from "../../Interfaces/LoadPlayersActionInterface";
 import { EmptyObject } from "redux";
 import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface";
 import { Action } from "../../Interfaces/ActionInterface";
+import { CreatePlayerAction } from "../../Interfaces/CreataePlayerActionInterface";
 
 const playersReducer = (
   players: Player[] = [],
@@ -16,9 +17,13 @@ const playersReducer = (
       newPlayers = [...(action as LoadPlayersAction).players];
       break;
     case actionsTypes.deletePlayer:
-      newPlayers = players.filter(
+      const deletedPlayers = players.filter(
         (player) => player.id !== (action as DeletePlayerAction).id
       );
+      newPlayers = [...deletedPlayers];
+      break;
+    case actionsTypes.createPlayer:
+      newPlayers = [...players, (action as CreatePlayerAction).player];
       break;
     default:
       newPlayers = [...players];
