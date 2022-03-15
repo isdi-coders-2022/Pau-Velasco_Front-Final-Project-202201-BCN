@@ -77,13 +77,13 @@ const NavBar = (): JSX.Element => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/mi-equipo">
+            <Link to="/main-page">
               <FontAwesomeIcon icon={faUsers} />
               <p>mi equipo</p>
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/add-player">
+            <Link to="/create-player">
               <FontAwesomeIcon icon={faUserPlus} />
               <p>añadir jugador</p>
             </Link>
