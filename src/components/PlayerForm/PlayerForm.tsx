@@ -16,11 +16,6 @@ const FormContainer = styled.div`
   font-weight: 100;
   line-height: 18px;
   padding: 20px;
-`;
-
-const PlayerNameContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   & input {
     height: 30px;
     width: 100vw;
@@ -28,10 +23,18 @@ const PlayerNameContainer = styled.div`
     padding: 0 10px;
     outline: none;
     text-transform: uppercase;
-    text-align: center;
     :focus-visible {
       border: 2px solid #fca311;
     }
+  }
+`;
+
+const PlayerNameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  & input {
+    width: 100vw;
+    max-width: 320px;
   }
 `;
 
@@ -40,6 +43,8 @@ const DorsalFotoContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #fca311;
 
   & div {
     display: flex;
@@ -48,17 +53,12 @@ const DorsalFotoContainer = styled.div`
 `;
 
 const InputNumberContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   & input {
-    height: 30px;
     width: 70px;
     max-width: 320px;
-    padding: 0 10px;
-    outline: none;
-    text-transform: uppercase;
     text-align: center;
-    :focus-visible {
-      border: 2px solid #fca311;
-    }
   }
 `;
 
@@ -163,7 +163,7 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
             </div>
           </DorsalFotoContainer>
           <div>
-            <div>
+            <InputNumberContainer>
               <label htmlFor="goals">GOLES</label>
               <input
                 type="number"
@@ -171,8 +171,8 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
                 value={formData.goals}
                 onChange={changeData}
               />
-            </div>
-            <div>
+            </InputNumberContainer>
+            <InputNumberContainer>
               <label htmlFor="assists">ASSISTS</label>
               <input
                 type="number"
@@ -180,8 +180,8 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
                 value={formData.assists}
                 onChange={changeData}
               />
-            </div>
-            <div>
+            </InputNumberContainer>
+            <InputNumberContainer>
               <label htmlFor="yellowCards">AMARIL</label>
               <input
                 type="number"
@@ -189,8 +189,8 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
                 value={formData.yellowCards}
                 onChange={changeData}
               />
-            </div>
-            <div>
+            </InputNumberContainer>
+            <InputNumberContainer>
               <label htmlFor="redCards">ROJAS</label>
               <input
                 type="number"
@@ -198,8 +198,8 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
                 value={formData.redCards}
                 onChange={changeData}
               />
-            </div>
-            <div>
+            </InputNumberContainer>
+            <InputNumberContainer>
               <label htmlFor="totalMatches">P. JUGADOS</label>
               <input
                 type="number"
@@ -207,7 +207,7 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
                 value={formData.totalMatches}
                 onChange={changeData}
               />
-            </div>
+            </InputNumberContainer>
             <div>
               <label htmlFor="position">POSICIÓN</label>
               <select
