@@ -13,12 +13,12 @@ export interface Player {
 
 export interface CreatedPlayer {
   name: string;
-  number: number;
-  goals: number;
-  assists: number;
-  yellowCards: number;
-  redCards: number;
-  totalMatches: number;
+  number: string;
+  goals: string;
+  assists: string;
+  yellowCards: string;
+  redCards: string;
+  totalMatches: string;
   position: string;
   photo: string;
 }
