@@ -8,7 +8,7 @@ export interface Player {
   totalMatches: number;
   position: string;
   photo: string;
-  id?: string;
+  id: string;
 }
 
 export interface CreatedPlayer {
