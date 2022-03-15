@@ -1,7 +1,93 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import styled from "styled-components";
 import { createPlayerThunk } from "../../redux/thunks/playersThunk";
 import blankFields from "../../utils/blankFields";
+
+const FormContainer = styled.div`
+  background: linear-gradient(193.32deg, #14213d 45.83%, #000000 100%);
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 18px;
+  padding: 20px;
+`;
+
+const PlayerNameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  & input {
+    height: 30px;
+    width: 100vw;
+    max-width: 320px;
+    padding: 0 10px;
+    outline: none;
+    text-transform: uppercase;
+    text-align: center;
+    :focus-visible {
+      border: 2px solid #fca311;
+    }
+  }
+`;
+
+const DorsalFotoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  & div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const InputNumberContainer = styled.div`
+  & input {
+    height: 30px;
+    width: 70px;
+    max-width: 320px;
+    padding: 0 10px;
+    outline: none;
+    text-transform: uppercase;
+    text-align: center;
+    :focus-visible {
+      border: 2px solid #fca311;
+    }
+  }
+`;
+
+const InputFileContainer = styled.div`
+  position: relative;
+  display: inline-block;
+  ::before {
+    background-color: #fca311;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: "SUBIR ARCHIVO";
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  & input {
+    opacity: 0;
+    width: 100px;
+    height: 32px;
+    display: inline-block;
+  }
+`;
 
 interface PlayerFormProps {
   heading: string;
@@ -21,7 +107,11 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
     formData.totalMatches === null ||
     formData.position === "";
 
-  const changeData = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const changeData = (
+    event:
+      | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLInputElement>
+  ) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
   const changeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,20 +128,20 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
 
   return (
     <>
-      <div>
+      <FormContainer>
         <h2>{heading}</h2>
         <form noValidate autoComplete="off" onSubmit={submitForm}>
-          <div>
-            <div>
-              <label htmlFor="name">NOMBRE DEL JUGADOR</label>
-              <input
-                type="text"
-                id="name"
-                value={formData.name}
-                onChange={changeData}
-              />
-            </div>
-            <div>
+          <PlayerNameContainer>
+            <label htmlFor="name">NOMBRE DEL JUGADOR</label>
+            <input
+              type="text"
+              id="name"
+              value={formData.name}
+              onChange={changeData}
+            />
+          </PlayerNameContainer>
+          <DorsalFotoContainer>
+            <InputNumberContainer>
               <label htmlFor="number">DORSAL</label>
               <input
                 type="number"
@@ -59,17 +149,19 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
                 value={formData.number}
                 onChange={changeData}
               />
-            </div>
+            </InputNumberContainer>
             <div>
-              <label htmlFor="photo"></label>
-              <input
-                type="file"
-                id="photo"
-                onChange={changeFile}
-                accept="image/*"
-              />
+              <label htmlFor="photo">FOTO</label>
+              <InputFileContainer>
+                <input
+                  type="file"
+                  id="photo"
+                  onChange={changeFile}
+                  accept="image/*"
+                />
+              </InputFileContainer>
             </div>
-          </div>
+          </DorsalFotoContainer>
           <div>
             <div>
               <label htmlFor="goals">GOLES</label>
@@ -118,19 +210,23 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
             </div>
             <div>
               <label htmlFor="position">POSICIÓN</label>
-              <input
-                type="text"
+              <select
                 id="position"
                 value={formData.position}
                 onChange={changeData}
-              />
+              >
+                <option value="portero">PORTERO</option>
+                <option value="cierre">CIERRE</option>
+                <option value="alero">ALERO</option>
+                <option value="pívote">PÍVOTE</option>
+              </select>
             </div>
           </div>
           <button type="submit" disabled={isInvalid}>
             CREAR
           </button>
         </form>
-      </div>
+      </FormContainer>
     </>
   );
 };
