@@ -61,11 +61,10 @@ export const createPlayerThunk =
     data.append("totalMatches", player.totalMatches);
     data.append("position", player.position);
 
-    const response = await fetch(`${url}player/create-player,`, {
+    const response = await fetch(`${url}player/create-player`, {
       method: "POST",
       body: data,
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdSIsImlkIjoiNjIyNzE5MDYyYjJhMDIzNzQ1ODYxZDUyIiwiaWF0IjoxNjQ2ODM1ODEzfQ.SjA-pGMQWfRLTPk45sB7YW_eOa1DmK_8CWwS8ANHixg`,
       },
     });
