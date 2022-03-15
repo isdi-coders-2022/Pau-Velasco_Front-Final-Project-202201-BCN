@@ -4,6 +4,7 @@ import { Player } from "../../Interfaces/PlayerInterface";
 import { User } from "../../Interfaces/UserInterface";
 import actionsTypes from "./actionsTypes";
 import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface";
+import { CreatePlayerAction } from "../../Interfaces/CreataePlayerActionInterface";
 
 export const loadUserAction = (user: User): LoadUserAction => ({
   type: actionsTypes.loadUser,
@@ -18,4 +19,9 @@ export const loadPlayersAction = (players: Player[]): LoadPlayersAction => ({
 export const deletePlayerAction = (id: string): DeletePlayerAction => ({
   type: actionsTypes.deletePlayer,
   id,
+});
+
+export const createPlayerAction = (player: Player): CreatePlayerAction => ({
+  type: actionsTypes.createPlayer,
+  player,
 });

@@ -1,9 +1,13 @@
 import ObjectID from "bson-objectid";
 import { Player } from "../../Interfaces/PlayerInterface";
 import { User } from "../../Interfaces/UserInterface";
-import { generateRandomPlayers } from "../../mocks/playerFactory";
+import {
+  generateRandomPlayer,
+  generateRandomPlayers,
+} from "../../mocks/playerFactory";
 import { generateRandomUser } from "../../mocks/userFactory";
 import {
+  createPlayerAction,
   deletePlayerAction,
   loadPlayersAction,
   loadUserAction,
@@ -53,6 +57,22 @@ describe("Given a delete-player action", () => {
       };
 
       const action = deletePlayerAction(id);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a create-player action", () => {
+  describe("When it receives a player", () => {
+    test("Then it should return an action with type createPlayer and the player", () => {
+      const player: Player = generateRandomPlayer();
+      const expectedAction = {
+        type: "create-player",
+        player,
+      };
+
+      const action = createPlayerAction(player);
 
       expect(action).toEqual(expectedAction);
     });
