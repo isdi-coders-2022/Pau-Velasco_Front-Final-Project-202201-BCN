@@ -16,5 +16,6 @@ const playerFactory = Factory.define<Player>(() => ({
   id: ObjectID().toHexString(),
 }));
 
+export const generateRandomPlayer = (): Player => playerFactory.build();
 export const generateRandomPlayers = (total: number): Player[] =>
   playerFactory.buildList(total);
