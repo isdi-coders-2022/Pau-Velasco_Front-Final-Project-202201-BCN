@@ -1,4 +1,7 @@
-import { generateRandomPlayers } from "../../mocks/playerFactory";
+import {
+  generateRandomPlayer,
+  generateRandomPlayers,
+} from "../../mocks/playerFactory";
 import playersReducer from "./playersReducer";
 
 describe("Given a playersReducer reducer", () => {
@@ -74,6 +77,22 @@ describe("Given a playersReducer reducer", () => {
       const newPlayers = playersReducer(players, deleteAction);
 
       expect(newPlayers).toHaveLength(players.length - 1);
+    });
+  });
+
+  describe("When it receives a list of players and an action with create-player type and the new player", () => {
+    test("Then it should add the player to the list of players", () => {
+      const players = generateRandomPlayers(3);
+      const player = generateRandomPlayer();
+
+      const createAction = {
+        type: "create-player",
+        player,
+      };
+
+      const newPlayers = playersReducer(players, createAction);
+
+      expect(newPlayers).toHaveLength(players.length + 1);
     });
   });
 });
