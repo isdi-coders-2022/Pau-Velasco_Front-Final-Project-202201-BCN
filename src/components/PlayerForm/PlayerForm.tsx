@@ -1,7 +1,10 @@
 import { CreatedPlayer } from "../../Interfaces/PlayerInterface";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createPlayerThunk } from "../../redux/thunks/playersThunk";
 
 const PlayerForm = () => {
+  const dispatch = useDispatch();
   const blankFields: CreatedPlayer = {
     name: "",
     number: "",
@@ -37,6 +40,7 @@ const PlayerForm = () => {
 
   const submitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
+    dispatch(createPlayerThunk(formData));
   };
 
   return (
