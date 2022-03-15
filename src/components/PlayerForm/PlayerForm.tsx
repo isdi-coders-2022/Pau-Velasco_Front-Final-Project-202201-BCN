@@ -4,13 +4,13 @@ import { useState } from "react";
 const PlayerForm = () => {
   const blankFields: CreatedPlayer = {
     name: "",
-    number: 0,
+    number: "",
     photo: "",
-    goals: 0,
-    assists: 0,
-    yellowCards: 0,
-    redCards: 0,
-    totalMatches: 0,
+    goals: "",
+    assists: "",
+    yellowCards: "",
+    redCards: "",
+    totalMatches: "",
     position: "",
   };
   const [formData, setFormData] = useState(blankFields);
