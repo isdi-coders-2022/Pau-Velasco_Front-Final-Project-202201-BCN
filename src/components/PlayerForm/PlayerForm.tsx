@@ -71,7 +71,7 @@ const PlayerForm = () => {
               type="file"
               id="photo"
               onChange={changeFile}
-              accept=".png .jpg"
+              accept="image/*"
             />
           </div>
         </div>
