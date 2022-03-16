@@ -186,6 +186,9 @@ const PlayerForm = ({
       | React.ChangeEvent<HTMLSelectElement>
       | React.ChangeEvent<HTMLInputElement>
   ) => {
+    if (Number(event.target.value) > 99 || Number(event.target.value) < 0) {
+      return;
+    }
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
   const changeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -219,6 +222,8 @@ const PlayerForm = ({
               id="name"
               value={formData.name}
               onChange={changeData}
+              minLength={3}
+              maxLength={20}
             />
           </PlayerNameContainer>
           <DorsalFotoContainer>
@@ -229,6 +234,8 @@ const PlayerForm = ({
                 id="number"
                 value={formData.number}
                 onChange={changeData}
+                min={0}
+                max={99}
               />
             </InputDorsalContainer>
             <div>
@@ -253,6 +260,8 @@ const PlayerForm = ({
                   id="goals"
                   value={formData.goals}
                   onChange={changeData}
+                  min={0}
+                  max={99}
                 />
               </div>
             </InputNumberContainer>
@@ -265,6 +274,8 @@ const PlayerForm = ({
                   id="assists"
                   value={formData.assists}
                   onChange={changeData}
+                  min={0}
+                  max={99}
                 />
               </div>
             </InputNumberContainer>
@@ -279,6 +290,8 @@ const PlayerForm = ({
                   id="yellowCards"
                   value={formData.yellowCards}
                   onChange={changeData}
+                  min={0}
+                  max={99}
                 />
               </RedYellowCardContainer>
             </InputNumberContainer>
@@ -291,6 +304,8 @@ const PlayerForm = ({
                   id="redCards"
                   value={formData.redCards}
                   onChange={changeData}
+                  min={0}
+                  max={99}
                 />
               </RedYellowCardContainer>
             </InputNumberContainer>
@@ -305,6 +320,8 @@ const PlayerForm = ({
                   id="totalMatches"
                   value={formData.totalMatches}
                   onChange={changeData}
+                  min={0}
+                  max={99}
                 />
               </div>
             </InputNumberContainer>
