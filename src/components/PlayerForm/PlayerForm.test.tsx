@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
 import PlayerForm from "./PlayerForm";
@@ -53,6 +54,44 @@ describe("Given a PlayerForm component", () => {
       expect(findRoj).toBeInTheDocument();
       expect(findJugados).toBeInTheDocument();
       expect(findPosicion).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user creates a player", () => {
+    test("Then it should enable the button submit", () => {
+      const numberTest = "1";
+      const nameTest = "Cristiano";
+      const positionTest = "cierre";
+      const thunkFunction = jest.fn();
+      const goodFeedback = jest.fn();
+      const file = new File(["hello"], "hello.png", { type: "image/png" });
+
+      render(
+        <Provider store={store}>
+          <PlayerForm
+            badFeedbaack={() => {}}
+            goodFeedback={goodFeedback}
+            heading={""}
+            thunk={thunkFunction}
+          />
+        </Provider>
+      );
+
+      const inputsNumber = screen.getAllByRole("spinbutton");
+      inputsNumber.forEach((input) => userEvent.type(input, numberTest));
+
+      const inputName = screen.getByRole("textbox");
+      userEvent.type(inputName, nameTest);
+
+      const selectPosition = screen.getByRole("combobox");
+      userEvent.selectOptions(selectPosition, positionTest);
+
+      const addFile = screen.getByLabelText("FOTO");
+      userEvent.upload(addFile, file);
+
+      const submitButton = screen.getByRole("button");
+
+      expect(submitButton).not.toBeDisabled();
     });
   });
 });
