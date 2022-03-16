@@ -94,4 +94,29 @@ describe("Given a PlayerForm component", () => {
       expect(submitButton).not.toBeDisabled();
     });
   });
+
+  describe("When the user creates a player and the inputs numbers upper than 99", () => {
+    test("Then it should display 99", () => {
+      const numberTest = "999";
+      const thunkFunction = jest.fn();
+      const goodFeedback = jest.fn();
+      const expectedOutput = "99";
+
+      render(
+        <Provider store={store}>
+          <PlayerForm
+            badFeedbaack={() => {}}
+            goodFeedback={goodFeedback}
+            heading={""}
+            thunk={thunkFunction}
+          />
+        </Provider>
+      );
+
+      const inputsNumber = screen.getAllByRole("spinbutton");
+      inputsNumber.forEach((input) => userEvent.type(input, numberTest));
+
+      expect((inputsNumber[0] as HTMLInputElement).value).toBe(expectedOutput);
+    });
+  });
 });
