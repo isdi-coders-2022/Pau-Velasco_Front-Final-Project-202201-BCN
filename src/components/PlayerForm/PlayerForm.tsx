@@ -155,9 +155,10 @@ const RedYellowCardContainer = styled.div`
 
 interface PlayerFormProps {
   heading: string;
+  feedback: (name: string) => void;
 }
 
-const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
+const PlayerForm = ({ heading, feedback }: PlayerFormProps): JSX.Element => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(blankFields);
   const isInvalid =
@@ -187,6 +188,7 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
 
   const submitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
+    feedback(formData.name);
     dispatch(createPlayerThunk(formData));
   };
 
