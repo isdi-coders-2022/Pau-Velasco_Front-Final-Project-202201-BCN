@@ -46,7 +46,8 @@ export const deletePlayerThunk =
   };
 
 export const createPlayerThunk =
-  (player: CreatedPlayer) => async (dispatch: Dispatch) => {
+  (player: CreatedPlayer) =>
+  async (dispatch: Dispatch): Promise<any> => {
     const data = new FormData();
     data.append("photo", player.photo);
     data.append("name", player.name);
