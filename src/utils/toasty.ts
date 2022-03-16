@@ -10,3 +10,12 @@ export const deleteFeedback = (name: string) => {
     hideProgressBar: true,
   });
 };
+
+export const createFeedback = (name: string) => {
+  toast.success(`Player ${name} created`, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 1500,
+    theme: "colored",
+    hideProgressBar: true,
+  });
+};
