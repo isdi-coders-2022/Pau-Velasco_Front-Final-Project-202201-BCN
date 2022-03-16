@@ -1,12 +1,13 @@
 import PlayerForm from "../components/PlayerForm/PlayerForm";
 import { createPlayerThunk } from "../redux/thunks/playersThunk";
-import { createFeedback } from "../utils/toasty";
+import { createFeedback, notCreateFeedback } from "../utils/toasty";
 
 const CreatePlayer = () => {
   return (
     <PlayerForm
       heading={"añade un nuevo jugador a tu equipo"}
-      feedback={createFeedback}
+      goodFeedback={createFeedback}
+      badFeedbaack={notCreateFeedback}
       thunk={createPlayerThunk}
     />
   );

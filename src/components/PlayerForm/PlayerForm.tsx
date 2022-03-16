@@ -7,6 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CreatedPlayer } from "../../Interfaces/PlayerInterface";
 import blankFields from "../../utils/blankFields";
@@ -155,15 +156,18 @@ const RedYellowCardContainer = styled.div`
 
 interface PlayerFormProps {
   heading: string;
-  feedback: (name: string) => void;
-  thunk: (player: CreatedPlayer) => void;
+  goodFeedback: (name: string) => void;
+  badFeedbaack: (name: string) => void;
+  thunk: (player: CreatedPlayer) => any;
 }
 
 const PlayerForm = ({
   heading,
-  feedback,
+  goodFeedback,
+  badFeedbaack: badFeedback,
   thunk,
 }: PlayerFormProps): JSX.Element => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(blankFields);
   const isInvalid =
@@ -191,10 +195,16 @@ const PlayerForm = ({
     });
   };
 
-  const submitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const submitForm = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    feedback(formData.name);
-    dispatch(thunk(formData));
+    const returnDispatch = await dispatch(thunk(formData));
+
+    if (!returnDispatch.error) {
+      goodFeedback(formData.name);
+      navigate("/");
+    } else {
+      badFeedback(formData.name);
+    }
   };
 
   return (

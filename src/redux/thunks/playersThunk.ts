@@ -1,5 +1,5 @@
+import { Dispatch } from "redux";
 import { ThunkDispatch } from "redux-thunk";
-import { CreatePlayerAction } from "../../Interfaces/CreataePlayerActionInterface";
 import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface";
 import { LoadPlayersAction } from "../../Interfaces/LoadPlayersActionInterface";
 import { CreatedPlayer, Player } from "../../Interfaces/PlayerInterface";
@@ -46,10 +46,7 @@ export const deletePlayerThunk =
   };
 
 export const createPlayerThunk =
-  (player: CreatedPlayer) =>
-  async (
-    dispatch: ThunkDispatch<RootState, void, CreatePlayerAction>
-  ): Promise<void> => {
+  (player: CreatedPlayer) => async (dispatch: Dispatch) => {
     const data = new FormData();
     data.append("photo", player.photo);
     data.append("name", player.name);
@@ -68,7 +65,11 @@ export const createPlayerThunk =
         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdSIsImlkIjoiNjIyNzE5MDYyYjJhMDIzNzQ1ODYxZDUyIiwiaWF0IjoxNjQ2ODM1ODEzfQ.SjA-pGMQWfRLTPk45sB7YW_eOa1DmK_8CWwS8ANHixg`,
       },
     });
-
-    const newPlayer: Player = await response.json();
-    dispatch(createPlayerAction(newPlayer));
+    try {
+      const newPlayer: Player = await response.json();
+      dispatch(createPlayerAction(newPlayer));
+      return newPlayer;
+    } catch (error) {
+      return { error: "Can't create the player" };
+    }
   };

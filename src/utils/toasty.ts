@@ -19,3 +19,12 @@ export const createFeedback = (name: string) => {
     hideProgressBar: true,
   });
 };
+
+export const notCreateFeedback = (name: string) => {
+  toast.error(`Can't create ${name} player`, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 1500,
+    theme: "colored",
+    hideProgressBar: true,
+  });
+};
