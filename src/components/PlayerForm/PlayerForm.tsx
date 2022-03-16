@@ -1,3 +1,10 @@
+import {
+  faFutbol,
+  faLocationCrosshairs,
+  faPlay,
+  faShareNodes,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -42,8 +49,8 @@ const DorsalFotoContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  padding-bottom: 20px;
+  justify-content: space-between;
+  padding: 20px 0;
   border-bottom: 2px solid #fca311;
 
   & div {
@@ -52,14 +59,41 @@ const DorsalFotoContainer = styled.div`
   }
 `;
 
-const InputNumberContainer = styled.div`
+const InputDorsalContainer = styled.div`
   display: flex;
   flex-direction: column;
+  & label {
+  }
   & input {
     width: 70px;
     max-width: 320px;
     text-align: center;
   }
+`;
+
+const InputNumberContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  & label {
+    margin-left: ${(props) => props.about ?? "30px"};
+  }
+  & select {
+    margin-left: 10px;
+  }
+  & input {
+    width: 70px;
+    max-width: 320px;
+    text-align: center;
+    margin-left: 10px;
+  }
+`;
+
+const YellowRedCard = styled.span`
+  width: 15px;
+  height: 22px;
+  position: relative;
+  top: 5px;
+  background-color: ${(props) => props.color};
 `;
 
 const InputFileContainer = styled.div`
@@ -87,6 +121,16 @@ const InputFileContainer = styled.div`
     height: 32px;
     display: inline-block;
   }
+`;
+
+const LineInputsContainer = styled.section`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+`;
+
+const RedYellowCardContainer = styled.div`
+  display: flex;
 `;
 
 interface PlayerFormProps {
@@ -141,7 +185,7 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
             />
           </PlayerNameContainer>
           <DorsalFotoContainer>
-            <InputNumberContainer>
+            <InputDorsalContainer>
               <label htmlFor="number">DORSAL</label>
               <input
                 type="number"
@@ -149,7 +193,7 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
                 value={formData.number}
                 onChange={changeData}
               />
-            </InputNumberContainer>
+            </InputDorsalContainer>
             <div>
               <label htmlFor="photo">FOTO</label>
               <InputFileContainer>
@@ -162,66 +206,89 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
               </InputFileContainer>
             </div>
           </DorsalFotoContainer>
-          <div>
+          <LineInputsContainer>
             <InputNumberContainer>
               <label htmlFor="goals">GOLES</label>
-              <input
-                type="number"
-                id="goals"
-                value={formData.goals}
-                onChange={changeData}
-              />
+              <div>
+                <FontAwesomeIcon icon={faFutbol} color="#fca311" />
+                <input
+                  type="number"
+                  id="goals"
+                  value={formData.goals}
+                  onChange={changeData}
+                />
+              </div>
             </InputNumberContainer>
-            <InputNumberContainer>
+            <InputNumberContainer about="27px">
               <label htmlFor="assists">ASSISTS</label>
-              <input
-                type="number"
-                id="assists"
-                value={formData.assists}
-                onChange={changeData}
-              />
+              <div>
+                <FontAwesomeIcon icon={faShareNodes} color="#fca311" />
+                <input
+                  type="number"
+                  id="assists"
+                  value={formData.assists}
+                  onChange={changeData}
+                />
+              </div>
             </InputNumberContainer>
-            <InputNumberContainer>
+          </LineInputsContainer>
+          <LineInputsContainer>
+            <InputNumberContainer about="27px">
               <label htmlFor="yellowCards">AMARIL</label>
-              <input
-                type="number"
-                id="yellowCards"
-                value={formData.yellowCards}
-                onChange={changeData}
-              />
+              <RedYellowCardContainer>
+                <YellowRedCard color="#faff00"></YellowRedCard>
+                <input
+                  type="number"
+                  id="yellowCards"
+                  value={formData.yellowCards}
+                  onChange={changeData}
+                />
+              </RedYellowCardContainer>
             </InputNumberContainer>
-            <InputNumberContainer>
+            <InputNumberContainer about="25px">
               <label htmlFor="redCards">ROJAS</label>
-              <input
-                type="number"
-                id="redCards"
-                value={formData.redCards}
-                onChange={changeData}
-              />
+              <RedYellowCardContainer>
+                <YellowRedCard color="#ff0000"></YellowRedCard>
+                <input
+                  type="number"
+                  id="redCards"
+                  value={formData.redCards}
+                  onChange={changeData}
+                />
+              </RedYellowCardContainer>
+            </InputNumberContainer>
+          </LineInputsContainer>
+          <LineInputsContainer>
+            <InputNumberContainer about="25px">
+              <label htmlFor="totalMatches">P. JUGADOS</label>
+              <div>
+                <FontAwesomeIcon icon={faPlay} color="#fca311" />
+                <input
+                  type="number"
+                  id="totalMatches"
+                  value={formData.totalMatches}
+                  onChange={changeData}
+                />
+              </div>
             </InputNumberContainer>
             <InputNumberContainer>
-              <label htmlFor="totalMatches">P. JUGADOS</label>
-              <input
-                type="number"
-                id="totalMatches"
-                value={formData.totalMatches}
-                onChange={changeData}
-              />
-            </InputNumberContainer>
-            <div>
               <label htmlFor="position">POSICIÓN</label>
-              <select
-                id="position"
-                value={formData.position}
-                onChange={changeData}
-              >
-                <option value="portero">PORTERO</option>
-                <option value="cierre">CIERRE</option>
-                <option value="alero">ALERO</option>
-                <option value="pívote">PÍVOTE</option>
-              </select>
-            </div>
-          </div>
+              <div>
+                <FontAwesomeIcon icon={faLocationCrosshairs} color="#fca311" />
+                <select
+                  id="position"
+                  value={formData.position}
+                  onChange={changeData}
+                >
+                  <option value="">POSICION</option>
+                  <option value="portero">PORTERO</option>
+                  <option value="cierre">CIERRE</option>
+                  <option value="alero">ALERO</option>
+                  <option value="pívote">PÍVOTE</option>
+                </select>
+              </div>
+            </InputNumberContainer>
+          </LineInputsContainer>
           <button type="submit" disabled={isInvalid}>
             CREAR
           </button>
