@@ -107,6 +107,7 @@ const Options = styled.div`
 
   & svg {
     padding: 10px;
+    cursor: pointer;
   }
 
   & a {
