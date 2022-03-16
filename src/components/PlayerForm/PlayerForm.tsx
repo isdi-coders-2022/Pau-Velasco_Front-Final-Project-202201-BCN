@@ -52,6 +52,7 @@ const FormContainer = styled.div`
   & h2 {
     font-size: 18px;
     font-weight: 800;
+    text-transform: lowercase;
   }
 `;
 
