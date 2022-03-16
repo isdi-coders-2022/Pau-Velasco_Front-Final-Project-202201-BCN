@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { createPlayerThunk } from "../../redux/thunks/playersThunk";
+import { CreatedPlayer } from "../../Interfaces/PlayerInterface";
 import blankFields from "../../utils/blankFields";
 import GenericButton from "../GenericButton/GenericButton";
 
@@ -156,9 +156,14 @@ const RedYellowCardContainer = styled.div`
 interface PlayerFormProps {
   heading: string;
   feedback: (name: string) => void;
+  thunk: (player: CreatedPlayer) => void;
 }
 
-const PlayerForm = ({ heading, feedback }: PlayerFormProps): JSX.Element => {
+const PlayerForm = ({
+  heading,
+  feedback,
+  thunk,
+}: PlayerFormProps): JSX.Element => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(blankFields);
   const isInvalid =
@@ -189,7 +194,7 @@ const PlayerForm = ({ heading, feedback }: PlayerFormProps): JSX.Element => {
   const submitForm = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     feedback(formData.name);
-    dispatch(createPlayerThunk(formData));
+    dispatch(thunk(formData));
   };
 
   return (
