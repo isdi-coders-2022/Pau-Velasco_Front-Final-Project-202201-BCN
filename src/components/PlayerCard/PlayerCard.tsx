@@ -18,7 +18,7 @@ const HeaderContainer = styled.div`
   background-color: #fff;
   padding: 10px;
   display: flex;
-  border-radius: 3px;
+  border-radius: 3px 3px 0 0;
   width: 350px;
   text-transform: uppercase;
 
