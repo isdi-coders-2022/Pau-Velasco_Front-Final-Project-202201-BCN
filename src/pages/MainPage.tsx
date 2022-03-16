@@ -9,6 +9,7 @@ import {
   loadPlayersThunk,
 } from "../redux/thunks/playersThunk";
 import { loadUserThunk } from "../redux/thunks/userThunks";
+import { deleteFeedback } from "../utils/toasty";
 
 const MainPageContainer = styled.div`
   background: linear-gradient(193.32deg, #14213d 45.83%, #000000 100%);
@@ -55,6 +56,7 @@ const MainPage = (): JSX.Element => {
               player={player}
               actionOnClick={() => {
                 dispatch(deletePlayerThunk(player.id));
+                deleteFeedback(player.name);
               }}
               key={player.id}
             />
