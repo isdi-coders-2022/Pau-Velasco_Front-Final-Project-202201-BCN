@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { createPlayerThunk } from "../../redux/thunks/playersThunk";
 import blankFields from "../../utils/blankFields";
+import GenericButton from "../GenericButton/GenericButton";
 
 const FormContainer = styled.div`
   background: linear-gradient(193.32deg, #14213d 45.83%, #000000 100%);
@@ -23,6 +24,7 @@ const FormContainer = styled.div`
   font-weight: 100;
   line-height: 18px;
   padding: 20px;
+
   & input {
     height: 30px;
     width: 100vw;
@@ -33,6 +35,22 @@ const FormContainer = styled.div`
     :focus-visible {
       border: 2px solid #fca311;
     }
+  }
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & button {
+    margin-top: 30px;
+  }
+
+  & h2 {
+    font-size: 18px;
+    font-weight: 800;
   }
 `;
 
@@ -52,6 +70,7 @@ const DorsalFotoContainer = styled.div`
   justify-content: space-between;
   padding: 20px 0;
   border-bottom: 2px solid #fca311;
+  width: 100%;
 
   & div {
     display: flex;
@@ -127,6 +146,7 @@ const LineInputsContainer = styled.section`
   display: flex;
   justify-content: space-between;
   padding-top: 25px;
+  width: 100%;
 `;
 
 const RedYellowCardContainer = styled.div`
@@ -289,9 +309,7 @@ const PlayerForm = ({ heading }: PlayerFormProps): JSX.Element => {
               </div>
             </InputNumberContainer>
           </LineInputsContainer>
-          <button type="submit" disabled={isInvalid}>
-            CREAR
-          </button>
+          <GenericButton text="CREAR" disabled={isInvalid} />
         </form>
       </FormContainer>
     </>
