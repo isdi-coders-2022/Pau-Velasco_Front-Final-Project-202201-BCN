@@ -37,7 +37,9 @@ describe("Given a PlayerCard component", () => {
         `PARTIDOS JUGADOS: ${player.totalMatches}`
       );
       const findPosition = screen.getByText(`POSICIóN: ${player.position}`);
-      const findPhoto = screen.getByRole("img");
+      const findPhoto = screen.getByRole("img", {
+        name: "trash",
+      });
 
       expect(findName).toBeInTheDocument();
       expect(findNumber).toBeInTheDocument();

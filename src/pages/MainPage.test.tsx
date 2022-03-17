@@ -1,4 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../redux/store";
@@ -59,6 +64,27 @@ describe("Given a MainPage page", () => {
       expect(findMessiName).toBeInTheDocument();
       expect(findCristianoNumber).toBeInTheDocument();
       expect(findMessiGoals).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user click in the first player trash icon", () => {
+    test("Then it should delete the card", async () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <MainPage />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const findCristiano = await screen.findByText(/cristiano/i);
+      const findTrashButton = await screen.findAllByRole("img", {
+        name: "trash",
+      });
+      userEvent.click(findTrashButton[0]);
+      await waitForElementToBeRemoved(findCristiano);
+
+      expect(findCristiano).not.toBeInTheDocument();
     });
   });
 });
