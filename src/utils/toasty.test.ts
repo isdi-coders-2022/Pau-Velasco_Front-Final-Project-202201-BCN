@@ -29,3 +29,13 @@ describe("Given a createFeedback function", () => {
     });
   });
 });
+
+describe("Given a notCreateFeedback function", () => {
+  describe("When it's called with a name", () => {
+    test("Then it should call toast error", () => {
+      notCreateFeedback("hola");
+
+      expect(toast.error).toHaveBeenCalled();
+    });
+  });
+});
