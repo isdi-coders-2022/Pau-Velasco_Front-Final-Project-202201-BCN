@@ -175,7 +175,11 @@ const PlayerCard = ({
             <Link to="/edit-player">
               <FontAwesomeIcon icon={faPencil} />
             </Link>
-            <FontAwesomeIcon icon={faTrashCan} onClick={actionOnClick} />
+            <FontAwesomeIcon
+              icon={faTrashCan}
+              onClick={actionOnClick}
+              title="trash"
+            />
           </Options>
         </StatsContainer>
       </CardContainer>
