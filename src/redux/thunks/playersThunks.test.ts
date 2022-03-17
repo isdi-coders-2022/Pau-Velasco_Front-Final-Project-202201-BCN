@@ -1,3 +1,4 @@
+import { server } from "../../mocks/server";
 import {
   createPlayerThunk,
   deletePlayerThunk,
@@ -90,6 +91,34 @@ describe("Given a createPlayer thunk", () => {
       await createdPlayer(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's called with a wrong new player", () => {
+    test("Then it should return an error", async () => {
+      const error = new Error("Can't create the player");
+      const dispatch = jest.fn();
+      const player = {
+        name: "Cristiano",
+        number: "7",
+        goals: "21",
+        assists: "3",
+        yellowCards: "4",
+        redCards: "1",
+        totalMatches: "21",
+        position: "Alero",
+        photo:
+          "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+      };
+      const action = {
+        type: "create-player",
+        player,
+      };
+
+      const createdPlayer: any = createPlayerThunk(action.player);
+      await createdPlayer(error);
+
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 });
