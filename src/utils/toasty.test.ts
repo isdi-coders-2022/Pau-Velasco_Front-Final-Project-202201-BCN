@@ -19,3 +19,13 @@ describe("Given a deleteFeedback function", () => {
     });
   });
 });
+
+describe("Given a createFeedback function", () => {
+  describe("When it's called with a name", () => {
+    test("Then it should call toast error", () => {
+      createFeedback("hola");
+
+      expect(toast.success).toHaveBeenCalled();
+    });
+  });
+});
