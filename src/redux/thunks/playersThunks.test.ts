@@ -1,4 +1,3 @@
-import { server } from "../../mocks/server";
 import {
   createPlayerThunk,
   deletePlayerThunk,
