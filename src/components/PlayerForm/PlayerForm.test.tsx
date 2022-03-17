@@ -27,10 +27,10 @@ describe("Given a PlayerForm component", () => {
       render(
         <Provider store={store}>
           <PlayerForm
-            badFeedbaack={() => {}}
+            badFeedback={() => {}}
             goodFeedback={() => {}}
             heading={title}
-            thunk={() => {}}
+            thunkFunction={() => {}}
           />
         </Provider>
       );
@@ -69,10 +69,10 @@ describe("Given a PlayerForm component", () => {
       render(
         <Provider store={store}>
           <PlayerForm
-            badFeedbaack={() => {}}
+            badFeedback={() => {}}
             goodFeedback={goodFeedback}
             heading={""}
-            thunk={thunkFunction}
+            thunkFunction={thunkFunction}
           />
         </Provider>
       );
@@ -105,10 +105,10 @@ describe("Given a PlayerForm component", () => {
       render(
         <Provider store={store}>
           <PlayerForm
-            badFeedbaack={() => {}}
+            badFeedback={() => {}}
             goodFeedback={goodFeedback}
             heading={""}
-            thunk={thunkFunction}
+            thunkFunction={thunkFunction}
           />
         </Provider>
       );

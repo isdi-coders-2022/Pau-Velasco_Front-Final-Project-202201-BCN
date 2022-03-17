@@ -7,8 +7,8 @@ const CreatePlayer = () => {
     <PlayerForm
       heading={"añade un nuevo jugador a tu equipo"}
       goodFeedback={createFeedback}
-      badFeedbaack={notCreateFeedback}
-      thunk={createPlayerThunk}
+      badFeedback={notCreateFeedback}
+      thunkFunction={createPlayerThunk}
     />
   );
 };

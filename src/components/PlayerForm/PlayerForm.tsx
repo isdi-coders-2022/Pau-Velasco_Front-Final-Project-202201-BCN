@@ -158,15 +158,15 @@ const RedYellowCardContainer = styled.div`
 interface PlayerFormProps {
   heading: string;
   goodFeedback: (name: string) => void;
-  badFeedbaack: (name: string) => void;
-  thunk: (player: CreatedPlayer) => any;
+  badFeedback: (name: string) => void;
+  thunkFunction: (player: CreatedPlayer) => any;
 }
 
 const PlayerForm = ({
   heading,
   goodFeedback,
-  badFeedbaack: badFeedback,
-  thunk,
+  badFeedback,
+  thunkFunction,
 }: PlayerFormProps): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -201,7 +201,7 @@ const PlayerForm = ({
 
   const submitForm = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const returnDispatch = await dispatch(thunk(formData));
+    const returnDispatch = await dispatch(thunkFunction(formData));
 
     if (!returnDispatch.error) {
       goodFeedback(formData.name);
