@@ -11,6 +11,7 @@ import {
   deletePlayerAction,
   loadPlayersAction,
   loadUserAction,
+  updatePlayerAction,
 } from "./actionsCreator";
 
 describe("Given a load user action", () => {
@@ -75,6 +76,22 @@ describe("Given a create-player action", () => {
       const action = createPlayerAction(player);
 
       expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a update-player action", () => {
+  describe("When it receives a player", () => {
+    test("Then it should return an action with type update-player and the updated player", () => {
+      const player: Player = generateRandomPlayer();
+      const expectedACtion = {
+        type: "update-player",
+        player,
+      };
+
+      const action = updatePlayerAction(player);
+
+      expect(action).toEqual(expectedACtion);
     });
   });
 });

@@ -27,7 +27,7 @@ export const createPlayerAction = (player: Player): CreatePlayerAction => ({
   player,
 });
 
-export const uploadPlayerAction = (player: Player): UpdatePlayerAction => ({
+export const updatePlayerAction = (player: Player): UpdatePlayerAction => ({
   type: actionsTypes.updatePlayer,
   player,
 });
