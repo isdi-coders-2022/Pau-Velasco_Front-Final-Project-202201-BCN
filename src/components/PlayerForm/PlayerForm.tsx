@@ -9,8 +9,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { CreatedPlayer } from "../../Interfaces/PlayerInterface";
-import blankFields from "../../utils/blankFields";
+import { CreatedPlayer, Player } from "../../Interfaces/PlayerInterface";
+import { createPlayerThunk } from "../../redux/thunks/playersThunk";
+import { blankFields, updateBlankFields } from "../../utils/blankFields";
 import GenericButton from "../GenericButton/GenericButton";
 
 const FormContainer = styled.div`
@@ -159,7 +160,9 @@ interface PlayerFormProps {
   heading: string;
   goodFeedback: (name: string) => void;
   badFeedback: (name: string) => void;
-  thunkFunction: (player: CreatedPlayer) => any;
+  thunkFunction: (player: CreatedPlayer, id?: string) => any;
+  id?: string;
+  playerToUpdate?: Player;
 }
 
 const PlayerForm = ({
@@ -167,10 +170,14 @@ const PlayerForm = ({
   goodFeedback,
   badFeedback,
   thunkFunction,
+  id,
+  playerToUpdate,
 }: PlayerFormProps): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState(blankFields);
+  const [formData, setFormData] = useState(
+    id ? updateBlankFields(playerToUpdate) : blankFields
+  );
   const isInvalid =
     formData.name === "" ||
     formData.number === null ||
@@ -201,7 +208,11 @@ const PlayerForm = ({
 
   const submitForm = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const returnDispatch = await dispatch(thunkFunction(formData));
+    const returnDispatch = await dispatch(
+      thunkFunction === createPlayerThunk
+        ? thunkFunction(formData)
+        : thunkFunction(formData, id)
+    );
 
     if (!returnDispatch.error) {
       goodFeedback(formData.name);
@@ -344,7 +355,7 @@ const PlayerForm = ({
               </div>
             </InputNumberContainer>
           </LineInputsContainer>
-          <GenericButton text="CREAR" disabled={isInvalid} />
+          <GenericButton text={id ? "EDITAR" : "CREAR"} disabled={isInvalid} />
         </form>
       </FormContainer>
     </>
