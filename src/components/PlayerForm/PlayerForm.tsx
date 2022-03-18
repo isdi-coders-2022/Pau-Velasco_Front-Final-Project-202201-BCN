@@ -208,10 +208,12 @@ const PlayerForm = ({
 
   const submitForm = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const data = formData;
+    setFormData(blankFields);
     const returnDispatch = await dispatch(
       thunkFunction === createPlayerThunk
-        ? thunkFunction(formData)
-        : thunkFunction(formData, id)
+        ? thunkFunction(data)
+        : thunkFunction(data, id)
     );
 
     if (!returnDispatch.error) {

@@ -8,7 +8,7 @@ import {
   loadPlayersThunk,
   updatePlayerThunk,
 } from "../redux/thunks/playersThunk";
-import { createFeedback, notCreateFeedback } from "../utils/toasty";
+import { notUpdateFeedback, updateFeedback } from "../utils/toasty";
 
 const UpdatePlayer = () => {
   const { id } = useParams();
@@ -23,8 +23,8 @@ const UpdatePlayer = () => {
   return (
     <PlayerForm
       heading={"añade un nuevo jugador a tu equipo"}
-      goodFeedback={createFeedback}
-      badFeedback={notCreateFeedback}
+      goodFeedback={updateFeedback}
+      badFeedback={notUpdateFeedback}
       thunkFunction={updatePlayerThunk}
       id={id}
       playerToUpdate={playerToUpdate}
