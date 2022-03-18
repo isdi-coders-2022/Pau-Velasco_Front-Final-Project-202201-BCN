@@ -14,6 +14,11 @@ import { createPlayerThunk } from "../../redux/thunks/playersThunk";
 import { blankFields, updateBlankFields } from "../../utils/blankFields";
 import GenericButton from "../GenericButton/GenericButton";
 
+interface StyleProps {
+  marginLabel?: string;
+  marginInput?: string;
+}
+
 const FormContainer = styled.div`
   background: linear-gradient(193.32deg, #14213d 45.83%, #000000 100%);
   width: 100%;
@@ -47,13 +52,14 @@ const FormContainer = styled.div`
   }
 
   & button {
-    margin-top: 30px;
+    margin-top: 70px;
   }
 
   & h2 {
     font-size: 18px;
     font-weight: 800;
     text-transform: lowercase;
+    padding: 25px 0;
   }
 `;
 
@@ -93,20 +99,27 @@ const InputDorsalContainer = styled.div`
   }
 `;
 
-const InputNumberContainer = styled.div`
+const InputNumberContainer = styled.div<StyleProps>`
   display: flex;
   flex-direction: column;
   & label {
-    margin-left: ${(props) => props.about ?? "30px"};
+    margin-left: ${(props) => props.marginLabel || "30px"};
   }
   & select {
     margin-left: 10px;
+    border-radius: 1px;
   }
   & input {
     width: 70px;
     max-width: 320px;
     text-align: center;
-    margin-left: 10px;
+    margin-left: ${(props) => props.marginInput || "10px"};
+  }
+  & select {
+    background-color: #fff;
+    border: none;
+    height: 30px;
+    font-size: 18px;
   }
 `;
 
@@ -118,7 +131,7 @@ const YellowRedCard = styled.span`
   background-color: ${(props) => props.color};
 `;
 
-const InputFileContainer = styled.div`
+const InputFileContainer = styled.div<StyleProps>`
   position: relative;
   display: inline-block;
   ::before {
@@ -148,7 +161,7 @@ const InputFileContainer = styled.div`
 const LineInputsContainer = styled.section`
   display: flex;
   justify-content: space-between;
-  padding-top: 25px;
+  padding-top: 45px;
   width: 100%;
 `;
 
@@ -254,7 +267,7 @@ const PlayerForm = ({
             </InputDorsalContainer>
             <div>
               <label htmlFor="photo">FOTO</label>
-              <InputFileContainer>
+              <InputFileContainer marginLabel="1px">
                 <input
                   type="file"
                   id="photo"
@@ -265,7 +278,7 @@ const PlayerForm = ({
             </div>
           </DorsalFotoContainer>
           <LineInputsContainer>
-            <InputNumberContainer>
+            <InputNumberContainer marginInput="7px" marginLabel="27px">
               <label htmlFor="goals">GOLES</label>
               <div>
                 <FontAwesomeIcon icon={faFutbol} color="#fca311" />
@@ -279,7 +292,7 @@ const PlayerForm = ({
                 />
               </div>
             </InputNumberContainer>
-            <InputNumberContainer about="27px">
+            <InputNumberContainer marginLabel="27px">
               <label htmlFor="assists">ASSISTS</label>
               <div>
                 <FontAwesomeIcon icon={faShareNodes} color="#fca311" />
@@ -295,7 +308,7 @@ const PlayerForm = ({
             </InputNumberContainer>
           </LineInputsContainer>
           <LineInputsContainer>
-            <InputNumberContainer about="27px">
+            <InputNumberContainer marginLabel="27px">
               <label htmlFor="yellowCards">AMARIL</label>
               <RedYellowCardContainer>
                 <YellowRedCard color="#faff00"></YellowRedCard>
@@ -309,7 +322,7 @@ const PlayerForm = ({
                 />
               </RedYellowCardContainer>
             </InputNumberContainer>
-            <InputNumberContainer about="25px">
+            <InputNumberContainer marginLabel="25px">
               <label htmlFor="redCards">ROJAS</label>
               <RedYellowCardContainer>
                 <YellowRedCard color="#ff0000"></YellowRedCard>
@@ -325,7 +338,7 @@ const PlayerForm = ({
             </InputNumberContainer>
           </LineInputsContainer>
           <LineInputsContainer>
-            <InputNumberContainer about="25px">
+            <InputNumberContainer marginLabel="25px">
               <label htmlFor="totalMatches">P. JUGADOS</label>
               <div>
                 <FontAwesomeIcon icon={faPlay} color="#fca311" />
