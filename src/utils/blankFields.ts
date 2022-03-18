@@ -1,6 +1,6 @@
 import { CreatedPlayer } from "../Interfaces/PlayerInterface";
 
-const blankFields: CreatedPlayer = {
+export const blankFields: CreatedPlayer = {
   name: "",
   number: "",
   photo: "",
@@ -12,4 +12,14 @@ const blankFields: CreatedPlayer = {
   position: "",
 };
 
-export default blankFields;
+export const updateBlankFields = (player: any) => ({
+  name: player.name,
+  number: player.number,
+  photo: player.photo,
+  goals: player.goals,
+  assists: player.assists,
+  yellowCards: player.yellowCards,
+  redCards: player.redCards,
+  totalMatches: player.totalMatches,
+  position: player.position,
+});
