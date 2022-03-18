@@ -58,4 +58,48 @@ describe("Given a playersReducer reducer", () => {
       expect(newPlayers).toHaveLength(players.length + 1);
     });
   });
+
+  describe("When it receives a list of players and an action with update-player type and the updated player", () => {
+    test("Then it should replace the old player for the updated player", () => {
+      const playerToUpdate = {
+        name: "Cristiano",
+        number: 7,
+        goals: 21,
+        assists: 3,
+        yellowCards: 4,
+        redCards: 9,
+        totalMatches: 21,
+        position: "Alero",
+        photo:
+          "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+        id: "62344d0d97640ec96d5f0e4e",
+      };
+      const updatedPlayer = {
+        name: "Cristiano Ronaldo",
+        number: 7,
+        goals: 21,
+        assists: 3,
+        yellowCards: 4,
+        redCards: 9,
+        totalMatches: 21,
+        position: "Alero",
+        photo:
+          "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+        id: "62344d0d97640ec96d5f0e4e",
+      };
+
+      const players = generateRandomPlayers(3);
+      players.push(playerToUpdate);
+      console.log(players);
+
+      const updateAction = {
+        type: "update-player",
+        player: updatedPlayer,
+      };
+
+      const newPlayers = playersReducer(players, updateAction);
+
+      expect(newPlayers).toContain(updatedPlayer);
+    });
+  });
 });
