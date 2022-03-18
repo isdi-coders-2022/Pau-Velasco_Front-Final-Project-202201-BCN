@@ -151,4 +151,36 @@ describe("Given a updatePlayerThunk function", () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
+
+  describe("When it's called with an id and updated player, but it has an error on the server", () => {
+    test("Then it should call the dispatch with an updatePlayerAction", async () => {
+      const dispatch = jest.fn();
+      const error = new Error("Can't update the player");
+      const player = {
+        name: "Cristiano",
+        number: "7",
+        goals: "21",
+        assists: "3",
+        yellowCards: "4",
+        redCards: "1",
+        totalMatches: "21",
+        position: "Alero",
+        photo:
+          "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+        id: "12",
+      };
+      const action = {
+        type: "update-player",
+        player,
+      };
+
+      const updatedPlayer: any = updatePlayerThunk(
+        action.player,
+        action.player.id
+      );
+      await updatedPlayer(error);
+
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
 });
