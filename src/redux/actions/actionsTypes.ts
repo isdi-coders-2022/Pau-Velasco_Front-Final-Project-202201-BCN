@@ -3,6 +3,7 @@ const actionsTypes = {
   loadPlayers: "load-players",
   deletePlayer: "delete-player",
   createPlayer: "create-player",
+  updatePlayer: "update-player",
 };
 
 export default actionsTypes;
