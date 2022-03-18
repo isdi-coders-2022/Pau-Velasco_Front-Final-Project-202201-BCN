@@ -1,4 +1,9 @@
-import { createFeedback, deleteFeedback, notCreateFeedback } from "./toasty";
+import {
+  createFeedback,
+  deleteFeedback,
+  notCreateFeedback,
+  updateFeedback,
+} from "./toasty";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
@@ -36,6 +41,16 @@ describe("Given a notCreateFeedback function", () => {
       notCreateFeedback("hola");
 
       expect(toast.error).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a updateFeedback function", () => {
+  describe("When it's called with a name", () => {
+    test("Then it should call toast error", () => {
+      updateFeedback("hola");
+
+      expect(toast.success).toHaveBeenCalled();
     });
   });
 });
