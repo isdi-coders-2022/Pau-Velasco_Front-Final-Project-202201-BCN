@@ -2,6 +2,7 @@ import {
   createPlayerThunk,
   deletePlayerThunk,
   loadPlayersThunk,
+  updatePlayerThunk,
 } from "./playersThunk";
 
 describe("Given a loadPlayersThunk function", () => {
@@ -118,6 +119,36 @@ describe("Given a createPlayer thunk", () => {
       await createdPlayer(error);
 
       expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a updatePlayerThunk function", () => {
+  describe("When it's called with an id and the updated player", () => {
+    test("Then it should call the dispatch with an updatePlayerAction", async () => {
+      const dispatch = jest.fn();
+      const player = {
+        name: "Cristiano",
+        number: "7",
+        goals: "21",
+        assists: "3",
+        yellowCards: "4",
+        redCards: "1",
+        totalMatches: "21",
+        position: "Alero",
+        photo:
+          "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+        id: "12",
+      };
+      const action = {
+        type: "update-player",
+        player,
+      };
+
+      const updatedPlayer = updatePlayerThunk(action.player, action.player.id);
+      await updatedPlayer(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
