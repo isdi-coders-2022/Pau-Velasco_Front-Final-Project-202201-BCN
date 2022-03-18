@@ -78,7 +78,7 @@ export const createPlayerThunk =
   };
 
 export const updatePlayerThunk =
-  (player: CreatedPlayer, id: string) =>
+  (player: CreatedPlayer, id: any) =>
   async (dispatch: Dispatch): Promise<any> => {
     const data = new FormData();
     data.append("photo", player.photo);

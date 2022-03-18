@@ -132,6 +132,7 @@ const PlayerCard = ({
     totalMatches,
     position,
     photo,
+    id,
   },
 }: PlayerCardProps): JSX.Element => {
   return (
@@ -172,7 +173,7 @@ const PlayerCard = ({
             </li>
           </ul>
           <Options>
-            <Link to="/edit-player">
+            <Link to={`update-player/${id}`}>
               <FontAwesomeIcon icon={faPencil} />
             </Link>
             <FontAwesomeIcon

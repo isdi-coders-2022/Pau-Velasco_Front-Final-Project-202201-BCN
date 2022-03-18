@@ -28,3 +28,21 @@ export const notCreateFeedback = (name: string) => {
     hideProgressBar: true,
   });
 };
+
+export const updateFeedback = (name: string) => {
+  toast.success(`Player ${name} updated`, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 1500,
+    theme: "colored",
+    hideProgressBar: true,
+  });
+};
+
+export const notUpdateFeedback = (name: string) => {
+  toast.success(`Can't update ${name} player`, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 1500,
+    theme: "colored",
+    hideProgressBar: true,
+  });
+};

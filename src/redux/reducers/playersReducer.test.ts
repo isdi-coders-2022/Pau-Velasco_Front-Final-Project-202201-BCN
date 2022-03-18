@@ -90,7 +90,6 @@ describe("Given a playersReducer reducer", () => {
 
       const players = generateRandomPlayers(3);
       players.push(playerToUpdate);
-      console.log(players);
 
       const updateAction = {
         type: "update-player",
