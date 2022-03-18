@@ -7,6 +7,7 @@ import {
   createPlayerAction,
   deletePlayerAction,
   loadPlayersAction,
+  updatePlayerAction,
 } from "../actions/actionsCreator";
 import { RootState } from "../store";
 
@@ -73,5 +74,36 @@ export const createPlayerThunk =
       return newPlayer;
     } catch (error) {
       return { error: "Can't create the player" };
+    }
+  };
+
+export const updatePlayerThunk =
+  (player: CreatedPlayer, id: string) =>
+  async (dispatch: Dispatch): Promise<any> => {
+    const data = new FormData();
+    data.append("photo", player.photo);
+    data.append("name", player.name);
+    data.append("number", player.number);
+    data.append("goals", player.goals);
+    data.append("assists", player.assists);
+    data.append("yellowCards", player.yellowCards);
+    data.append("redCards", player.redCards);
+    data.append("totalMatches", player.totalMatches);
+    data.append("position", player.position);
+
+    const response = await fetch(`${url}player/update/${id}`, {
+      method: "PUT",
+      body: data,
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdSIsImlkIjoiNjIyNzE5MDYyYjJhMDIzNzQ1ODYxZDUyIiwiaWF0IjoxNjQ2ODM1ODEzfQ.SjA-pGMQWfRLTPk45sB7YW_eOa1DmK_8CWwS8ANHixg`,
+      },
+    });
+
+    try {
+      const newPlayer: Player = await response.json();
+      dispatch(updatePlayerAction(newPlayer));
+      return newPlayer;
+    } catch (error) {
+      return { error: "Can't update the player" };
     }
   };

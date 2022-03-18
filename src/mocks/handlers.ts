@@ -94,4 +94,25 @@ export const handlers = [
         })
       )
   ),
+
+  rest.put(
+    `${process.env.REACT_APP_API_RENDER}player/update/12`,
+    (req, res, ctx) =>
+      res(
+        ctx.status(201),
+        ctx.json({
+          name: "Cristiano",
+          number: "7",
+          goals: "21",
+          assists: "3",
+          yellowCards: "4",
+          redCards: "1",
+          totalMatches: "21",
+          position: "Alero",
+          photo:
+            "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+          id: "12",
+        })
+      )
+  ),
 ];
