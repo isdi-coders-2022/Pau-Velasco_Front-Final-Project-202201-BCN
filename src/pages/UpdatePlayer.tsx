@@ -22,7 +22,7 @@ const UpdatePlayer = () => {
 
   return (
     <PlayerForm
-      heading={"añade un nuevo jugador a tu equipo"}
+      heading={"edita un jugador de tu equipo"}
       goodFeedback={updateFeedback}
       badFeedback={notUpdateFeedback}
       thunkFunction={updatePlayerThunk}
