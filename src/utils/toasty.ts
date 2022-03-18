@@ -39,7 +39,7 @@ export const updateFeedback = (name: string) => {
 };
 
 export const notUpdateFeedback = (name: string) => {
-  toast.success(`Can't update ${name} player`, {
+  toast.error(`Can't update ${name} player`, {
     position: toast.POSITION.BOTTOM_RIGHT,
     autoClose: 1500,
     theme: "colored",

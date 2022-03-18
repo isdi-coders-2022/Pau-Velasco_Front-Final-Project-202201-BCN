@@ -2,6 +2,7 @@ import {
   createFeedback,
   deleteFeedback,
   notCreateFeedback,
+  notUpdateFeedback,
   updateFeedback,
 } from "./toasty";
 import "react-toastify/dist/ReactToastify.css";
@@ -51,6 +52,16 @@ describe("Given a updateFeedback function", () => {
       updateFeedback("hola");
 
       expect(toast.success).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a notUpdateFeedback function", () => {
+  describe("When it's called with a name", () => {
+    test("Then it should call toast error", () => {
+      notUpdateFeedback("hola");
+
+      expect(toast.error).toHaveBeenCalled();
     });
   });
 });
