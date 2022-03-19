@@ -15,7 +15,7 @@ describe("Given an App page", () => {
         </BrowserRouter>
       );
 
-      const findLogout = screen.getByText(/logout/i);
+      const findLogout = screen.getByText(/log out/i);
       const findMyTeam = screen.getByText(/mi equipo/i);
       const findAddPlayer = screen.getByText(/añadir jugador/i);
 
