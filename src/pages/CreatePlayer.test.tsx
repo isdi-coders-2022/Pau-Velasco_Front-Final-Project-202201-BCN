@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { findByText, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../redux/store";
@@ -62,6 +63,45 @@ describe("Given a CreatePlayer page", () => {
       expect(findRoj).toBeInTheDocument();
       expect(findJugados).toBeInTheDocument();
       expect(findPosicion).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's rendered with a new player and the user click on submit", () => {
+    test("Then it should reset the form and show the created player toast", async () => {
+      const numberTest = "1";
+      const nameTest = "Cristiano";
+      const positionTest = "cierre";
+      const file = new File(["hello"], "hello.png", { type: "image/png" });
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <CreatePlayer />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const inputsNumber = screen.getAllByRole("spinbutton");
+      inputsNumber.forEach((input) => userEvent.type(input, numberTest));
+
+      const inputName = screen.getByRole("textbox");
+      userEvent.type(inputName, nameTest);
+
+      const selectPosition = screen.getByRole("combobox");
+      userEvent.selectOptions(selectPosition, positionTest);
+
+      const addFile = screen.getByLabelText("FOTO");
+      userEvent.upload(addFile, file);
+
+      const submitButton = screen.getByRole("button");
+      userEvent.click(submitButton);
+
+      expect(selectPosition).toHaveValue("");
+      expect(inputName).toHaveValue("");
+      expect(submitButton).toBeDisabled();
+
+      const findToast = await screen.findByText(`Player ${nameTest} created`);
+      expect(findToast).toBeInTheDocument();
     });
   });
 });
