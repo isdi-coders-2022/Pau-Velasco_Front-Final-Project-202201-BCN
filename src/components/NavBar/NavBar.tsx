@@ -38,10 +38,9 @@ const ListItem = styled.li<StyleProps>`
     text-decoration-line: none;
   }
   & svg {
-    color: ${(props) => props.color || "30px"};
+    color: ${(props) => props.color};
     @media (min-width: 400px) {
       padding-right: 20px;
-      color: #fca311;
       font-size: 40px;
     }
   }
