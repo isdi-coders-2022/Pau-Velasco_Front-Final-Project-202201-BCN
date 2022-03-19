@@ -1,8 +1,49 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../redux/store";
 import UpdatePlayer from "./UpdatePlayer";
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useParams: () => ({ id: "1" }),
+}));
+
+const state = {
+  players: [
+    {
+      name: "Cristiano",
+      number: 7,
+      goals: 21,
+      assists: 3,
+      yellowCards: 4,
+      redCards: 9,
+      totalMatches: 21,
+      position: "Alero",
+      photo:
+        "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+      id: "1",
+    },
+    {
+      name: "Messi",
+      number: 10,
+      goals: 43,
+      assists: 2,
+      yellowCards: 6,
+      redCards: 1,
+      totalMatches: 24,
+      position: "Cierre",
+      photo:
+        "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
+      id: "2",
+    },
+  ],
+};
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useSelector: () => state.players,
+}));
 
 describe("Given a UpdatePlayer page", () => {
   describe("When it's rendered", () => {
@@ -62,6 +103,46 @@ describe("Given a UpdatePlayer page", () => {
       expect(findRoj).toBeInTheDocument();
       expect(findJugados).toBeInTheDocument();
       expect(findPosicion).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's rendered with a new player and the user click on submit", () => {
+    test("Then it should reset the form and show the created player toast", async () => {
+      const numberTest = "1";
+      const nameTest = "Cristiano";
+      const positionTest = "cierre";
+      const file = new File(["hello"], "hello.png", { type: "image/png" });
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <UpdatePlayer />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const inputsNumber = screen.getAllByRole("spinbutton");
+      inputsNumber.forEach((input) => userEvent.type(input, numberTest));
+
+      const inputName = screen.getByRole("textbox");
+      userEvent.clear(inputName);
+      userEvent.type(inputName, nameTest);
+
+      const selectPosition = screen.getByRole("combobox");
+      userEvent.selectOptions(selectPosition, positionTest);
+
+      const addFile = screen.getByLabelText("FOTO");
+      userEvent.upload(addFile, file);
+
+      const submitButton = screen.getByRole("button");
+      userEvent.click(submitButton);
+
+      expect(selectPosition).toHaveValue("");
+      expect(inputName).toHaveValue("");
+      expect(submitButton).toBeDisabled();
+
+      const findToast = await screen.findByText(`Player ${nameTest} updated`);
+      expect(findToast).toBeInTheDocument();
     });
   });
 });
