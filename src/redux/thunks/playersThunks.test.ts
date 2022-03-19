@@ -138,7 +138,7 @@ describe("Given a updatePlayerThunk function", () => {
         position: "Alero",
         photo:
           "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
-        id: "12",
+        id: "1",
       };
       const action = {
         type: "update-player",
@@ -167,7 +167,7 @@ describe("Given a updatePlayerThunk function", () => {
         position: "Alero",
         photo:
           "https://img.uefa.com/imgml/TP/players/1/2022/324x324/63706.jpg?imwidth=36",
-        id: "12",
+        id: "1",
       };
       const action = {
         type: "update-player",
