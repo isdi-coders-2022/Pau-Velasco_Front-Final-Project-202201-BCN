@@ -4,10 +4,14 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-const ListItem = styled.li`
+interface StyleProps {
+  color?: string;
+}
+
+const ListItem = styled.li<StyleProps>`
   list-style: none;
   @media (min-width: 400px) {
     display: flex;
@@ -25,14 +29,20 @@ const ListItem = styled.li`
       min-height: 100vh;
       display: contents;
       padding-left: 10px;
+      font-weight: 800;
+      font-size: 24px;
     }
   }
   & a {
     color: #000;
+    text-decoration-line: none;
   }
   & svg {
+    color: ${(props) => props.color || "30px"};
     @media (min-width: 400px) {
       padding-right: 20px;
+      color: #fca311;
+      font-size: 40px;
     }
   }
 `;
@@ -40,15 +50,16 @@ const ListItem = styled.li`
 const ListContainer = styled.ul`
   display: flex;
   justify-content: space-around;
+  width: 100%;
   align-items: center;
   margin: 0;
   padding: 0;
-  width: 100%;
+
   @media (min-width: 400px) {
     flex-direction: column;
     height: 300px;
     align-items: flex-start;
-    padding-left: 30px;
+    padding-left: 10px;
   }
 `;
 
@@ -62,27 +73,38 @@ const NavigationContainer = styled.nav`
     justify-content: flex-start;
     width: 25%;
     min-height: 100vh;
+    background-color: #e5e5e5;
   }
 `;
 
 const NavBar = (): JSX.Element => {
+  const location = useLocation();
+  console.log(location);
   return (
     <>
       <NavigationContainer>
         <ListContainer>
-          <ListItem>
+          <ListItem color="#000">
             <Link to="/login">
               <FontAwesomeIcon icon={faArrowRightToBracket} />
-              <p>logout</p>
+              <p>log out</p>
             </Link>
           </ListItem>
-          <ListItem>
+          <ListItem
+            color={
+              location.pathname.includes("/main-page") === true
+                ? "#fca311"
+                : "#000"
+            }
+          >
             <Link to="/main-page">
               <FontAwesomeIcon icon={faUsers} />
               <p>mi equipo</p>
             </Link>
           </ListItem>
-          <ListItem>
+          <ListItem
+            color={location.pathname === "/create-player" ? "#fca311" : "#000"}
+          >
             <Link to="/create-player">
               <FontAwesomeIcon icon={faUserPlus} />
               <p>añadir jugador</p>

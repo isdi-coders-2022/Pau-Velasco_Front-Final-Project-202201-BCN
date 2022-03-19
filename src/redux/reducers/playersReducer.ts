@@ -5,7 +5,7 @@ import { EmptyObject } from "redux";
 import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface";
 import { Action } from "../../Interfaces/ActionInterface";
 import { CreatePlayerAction } from "../../Interfaces/CreataePlayerActionInterface";
-import { UpdatePlayerAction } from "../../Interfaces/UploadPlayerActionInterface";
+import { UpdatePlayerAction } from "../../Interfaces/UpdatePlayerActionInterface";
 
 const playersReducer = (
   players: Player[] = [],
