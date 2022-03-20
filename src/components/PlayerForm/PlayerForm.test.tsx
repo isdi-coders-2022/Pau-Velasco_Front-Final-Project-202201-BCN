@@ -47,8 +47,6 @@ describe("Given a PlayerForm component", () => {
       const findRoj = screen.getByLabelText(rojInput);
       const findJugados = screen.getByLabelText(jugadosInput);
       const findPosicion = screen.getByLabelText(posicionInput);
-      const findCross = screen.getByRole("img", { name: "cross" });
-      console.log("CROSS", findCross);
 
       expect(findTitle).toBeInTheDocument();
       expect(findName).toBeInTheDocument();
@@ -59,7 +57,6 @@ describe("Given a PlayerForm component", () => {
       expect(findRoj).toBeInTheDocument();
       expect(findJugados).toBeInTheDocument();
       expect(findPosicion).toBeInTheDocument();
-      expect(findCross).toBeInTheDocument();
     });
   });
 
