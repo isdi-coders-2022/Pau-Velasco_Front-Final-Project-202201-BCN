@@ -78,7 +78,7 @@ const NavigationContainer = styled.nav`
 
 const NavBar = (): JSX.Element => {
   const location = useLocation();
-  console.log(location);
+
   return (
     <>
       <NavigationContainer>
