@@ -1,4 +1,6 @@
 import {
+  faCheckCircle,
+  faCircleXmark,
   faFutbol,
   faLocationCrosshairs,
   faPlay,
@@ -133,8 +135,13 @@ const YellowRedCard = styled.span`
 
 const InputFileContainer = styled.div<StyleProps>`
   position: relative;
-  display: inline-block;
+  :hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
   ::before {
+    cursor: pointer;
     background-color: #fca311;
     display: flex;
     justify-content: center;
@@ -150,6 +157,7 @@ const InputFileContainer = styled.div<StyleProps>`
     top: 0;
     bottom: 0;
   }
+
   & input {
     opacity: 0;
     width: 100px;
@@ -167,6 +175,24 @@ const LineInputsContainer = styled.section`
 
 const RedYellowCardContainer = styled.div`
   display: flex;
+`;
+
+const CheckContainer = styled.div`
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 25px;
+  margin-right: 5px;
+`;
+
+const FileCheckContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `;
 
 interface PlayerFormProps {
@@ -265,17 +291,26 @@ const PlayerForm = ({
                 max={99}
               />
             </InputDorsalContainer>
-            <div>
+            <InputNumberContainer marginLabel="35px">
               <label htmlFor="photo">FOTO</label>
-              <InputFileContainer marginLabel="1px">
-                <input
-                  type="file"
-                  id="photo"
-                  onChange={changeFile}
-                  accept="image/*"
-                />
-              </InputFileContainer>
-            </div>
+              <FileCheckContainer>
+                <CheckContainer>
+                  {formData.photo ? (
+                    <FontAwesomeIcon icon={faCheckCircle} color="#060" />
+                  ) : (
+                    <FontAwesomeIcon icon={faCircleXmark} color="#ff0000" />
+                  )}
+                </CheckContainer>
+                <InputFileContainer marginLabel="1px">
+                  <input
+                    type="file"
+                    id="photo"
+                    onChange={changeFile}
+                    accept="image/*"
+                  />
+                </InputFileContainer>
+              </FileCheckContainer>
+            </InputNumberContainer>
           </DorsalFotoContainer>
           <LineInputsContainer>
             <InputNumberContainer marginInput="7px" marginLabel="27px">
