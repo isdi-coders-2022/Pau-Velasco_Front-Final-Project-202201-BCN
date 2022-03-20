@@ -296,9 +296,17 @@ const PlayerForm = ({
               <FileCheckContainer>
                 <CheckContainer>
                   {formData.photo ? (
-                    <FontAwesomeIcon icon={faCheckCircle} color="#060" />
+                    <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      color="#060"
+                      title="check"
+                    />
                   ) : (
-                    <FontAwesomeIcon icon={faCircleXmark} color="#ff0000" />
+                    <FontAwesomeIcon
+                      icon={faCircleXmark}
+                      color="#ff0000"
+                      title="cross"
+                    />
                   )}
                 </CheckContainer>
                 <InputFileContainer marginLabel="1px">
