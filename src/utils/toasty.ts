@@ -55,3 +55,21 @@ export const wrongLoginFeedback = () => {
     hideProgressBar: true,
   });
 };
+
+export const wrongRegisterFeedback = () => {
+  toast.error(`This username already exists`, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 1500,
+    theme: "colored",
+    hideProgressBar: true,
+  });
+};
+
+export const newRegisterFeedback = () => {
+  toast.success(`New user created`, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 1500,
+    theme: "colored",
+    hideProgressBar: true,
+  });
+};

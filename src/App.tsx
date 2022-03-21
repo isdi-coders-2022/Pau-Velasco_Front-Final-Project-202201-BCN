@@ -4,6 +4,7 @@ import CreatePlayer from "./pages/CreatePlayer";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
+import Register from "./pages/Register";
 import UpdatePlayer from "./pages/UpdatePlayer";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/main-page" />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/main-page" element={<MainPage />} />
         <Route path="/create-player" element={<CreatePlayer />} />
         <Route path="/main-page/update-player/:id" element={<UpdatePlayer />} />

@@ -84,7 +84,12 @@ const NavBar = (): JSX.Element => {
       <NavigationContainer>
         <ListContainer>
           <ListItem color="#000">
-            <Link to="/login">
+            <Link
+              to="/login"
+              onClick={() => {
+                localStorage.removeItem("token");
+              }}
+            >
               <FontAwesomeIcon icon={faArrowRightToBracket} />
               <p>log out</p>
             </Link>

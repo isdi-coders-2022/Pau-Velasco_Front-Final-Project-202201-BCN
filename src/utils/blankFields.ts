@@ -1,5 +1,5 @@
 import { CreatedPlayer } from "../Interfaces/PlayerInterface";
-import { LoggedUser } from "../Interfaces/UserInterface";
+import { LoggedUser, RegisterUser } from "../Interfaces/UserInterface";
 
 export const blankFields: CreatedPlayer = {
   name: "",
@@ -28,4 +28,10 @@ export const updateBlankFields = (player: any) => ({
 export const userBlankFields: LoggedUser = {
   username: "",
   password: "",
+};
+
+export const registerBlankFields: RegisterUser = {
+  username: "",
+  password: "",
+  teamName: "",
 };
