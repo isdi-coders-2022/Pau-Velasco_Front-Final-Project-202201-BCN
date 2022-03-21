@@ -5,13 +5,19 @@ import { BrowserRouter } from "react-router-dom";
 import store from "../redux/store";
 import CreatePlayer from "./CreatePlayer";
 
-const mockLocalStorage = {
-  getItem: () =>
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicGVwZSIsInVzZXJuYW1lIjoicGVwZSIsImlkIjoiNjIzMzFkZjQ3NDMzMGZiZDI4ZDU5NWUxIiwiaWF0IjoxNjQ3NTE3Mjg4fQ.suBLCba7CxFLfXRDudmvdL1uRzVFGAlnWxkOngW0i1A",
-};
-Object.defineProperty(window, "localStorage", { value: mockLocalStorage });
+const mockNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockNavigate,
+}));
 
 describe("Given a CreatePlayer page", () => {
+  const mockLocalStorage = {
+    getItem: () =>
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicGVwZSIsInVzZXJuYW1lIjoicGVwZSIsImlkIjoiNjIzMzFkZjQ3NDMzMGZiZDI4ZDU5NWUxIiwiaWF0IjoxNjQ3NTE3Mjg4fQ.suBLCba7CxFLfXRDudmvdL1uRzVFGAlnWxkOngW0i1A",
+  };
+  Object.defineProperty(window, "localStorage", { value: mockLocalStorage });
   describe("When it's rendered", () => {
     test("Then it should render a header with 'añade un nuevo jugador a tu equipo'", () => {
       const expectedTitle = "añade un nuevo jugador a tu equipo";
