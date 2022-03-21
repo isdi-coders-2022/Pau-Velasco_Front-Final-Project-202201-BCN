@@ -52,7 +52,7 @@ const MainPage = (): JSX.Element => {
     }
     dispatch(loadUserThunk());
     dispatch(loadPlayersThunk());
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
   return (
     <>
