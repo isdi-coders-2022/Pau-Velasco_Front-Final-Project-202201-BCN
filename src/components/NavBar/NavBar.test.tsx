@@ -1,6 +1,12 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar";
+
+const mockLocalStorage = {
+  removeItem: () => jest.fn(),
+};
+Object.defineProperty(window, "localStorage", { value: mockLocalStorage });
 
 describe("Given a NavBar component", () => {
   describe("When it`s rendered", () => {
@@ -12,6 +18,8 @@ describe("Given a NavBar component", () => {
       );
 
       const findLogout = screen.getByText(/log out/i);
+      userEvent.click(findLogout);
+
       const findMyTeam = screen.getByText(/mi equipo/i);
       const findAddPlayer = screen.getByText(/añadir jugador/i);
 
