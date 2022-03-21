@@ -6,9 +6,15 @@ import actionsTypes from "./actionsTypes";
 import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface";
 import { CreatePlayerAction } from "../../Interfaces/CreataePlayerActionInterface";
 import { UpdatePlayerAction } from "../../Interfaces/UpdatePlayerActionInterface";
+import { LoginUserAction } from "../../Interfaces/LoginUserActionInterface";
 
 export const loadUserAction = (user: User): LoadUserAction => ({
   type: actionsTypes.loadUser,
+  user,
+});
+
+export const loginUser = (user: User): LoginUserAction => ({
+  type: actionsTypes.loginUser,
   user,
 });
 
