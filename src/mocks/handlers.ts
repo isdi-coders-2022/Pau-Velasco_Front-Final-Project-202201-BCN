@@ -123,4 +123,17 @@ export const handlers = [
       })
     )
   ),
+
+  rest.post(
+    `${process.env.REACT_APP_API_RENDER}user/register`,
+    (req, res, ctx) =>
+      res(
+        ctx.status(201),
+        ctx.json({
+          username: "cristianito",
+          password: "thebest",
+          teamName: "manU",
+        })
+      )
+  ),
 ];
