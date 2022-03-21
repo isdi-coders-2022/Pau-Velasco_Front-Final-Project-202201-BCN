@@ -46,3 +46,12 @@ export const notUpdateFeedback = (name: string) => {
     hideProgressBar: true,
   });
 };
+
+export const wrongLoginFeedback = () => {
+  toast.error(`Wrong username or password`, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    autoClose: 1500,
+    theme: "colored",
+    hideProgressBar: true,
+  });
+};
