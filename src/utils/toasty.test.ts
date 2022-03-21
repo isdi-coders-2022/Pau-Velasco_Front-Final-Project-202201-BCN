@@ -65,3 +65,13 @@ describe("Given a notUpdateFeedback function", () => {
     });
   });
 });
+
+describe("Given a wrongLoginFeedback function", () => {
+  describe("When it's called", () => {
+    test("Then it should call toast error", () => {
+      notUpdateFeedback("hola");
+
+      expect(toast.error).toHaveBeenCalled();
+    });
+  });
+});
