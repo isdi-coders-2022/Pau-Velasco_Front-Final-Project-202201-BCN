@@ -1,9 +1,9 @@
-import { RegisteredUser, RegiterUser } from "../Interfaces/UserInterface";
+import { RegisteredUser, RegisterUser } from "../Interfaces/UserInterface";
 
 const url: any = process.env.REACT_APP_API_RENDER;
 
-export const registerUser = async (newUser: RegiterUser): Promise<any> => {
-  const response = await fetch(`${url}user/login`, {
+export const registerUser = async (newUser: RegisterUser): Promise<any> => {
+  const response = await fetch(`${url}user/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,9 +13,5 @@ export const registerUser = async (newUser: RegiterUser): Promise<any> => {
 
   const isError: RegisteredUser = await response.json();
 
-  if (isError.username) {
-    return;
-  } else {
-    return isError;
-  }
+  return isError;
 };

@@ -11,7 +11,7 @@ export interface LoggedUser {
   password: string;
 }
 
-export interface RegiterUser {
+export interface RegisterUser {
   username: string;
   password: string;
   teamName: string;
