@@ -39,16 +39,17 @@ const PlayersContainer = styled.div`
 
 const MainPage = (): JSX.Element => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-  if (!token) {
-    navigate("/login");
-  }
 
   const user = useSelector((state: State) => state.user);
   const players = useSelector((state: State) => state.players);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
     dispatch(loadUserThunk());
     dispatch(loadPlayersThunk());
   }, [dispatch]);
