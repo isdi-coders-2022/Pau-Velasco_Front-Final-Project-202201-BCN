@@ -87,3 +87,13 @@ describe("Given a wrongRegisterFeedback function", () => {
     });
   });
 });
+
+describe("Given a newRegisterFeedback function", () => {
+  describe("When it's called", () => {
+    test("Then it should call toast sucess", () => {
+      wrongRegisterFeedback();
+
+      expect(toast.success).toHaveBeenCalled();
+    });
+  });
+});
