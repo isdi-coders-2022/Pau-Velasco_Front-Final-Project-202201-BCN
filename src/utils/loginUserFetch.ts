@@ -12,12 +12,8 @@ export const loginUser = async (loginUser: LoggedUser): Promise<any> => {
     body: JSON.stringify(loginUser),
   });
 
-  try {
-    const token: Token = await response.json();
-
-    localStorage.setItem("token", token.token);
-    return token;
-  } catch (error) {
-    return error;
-  }
+  const token: Token = await response.json();
+  console.log("salgo FETCH", token);
+  localStorage.setItem("token", token.token);
+  return token;
 };
