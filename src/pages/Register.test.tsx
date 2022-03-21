@@ -10,9 +10,9 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
 }));
 
-describe("Given a Login page", () => {
-  describe("When it's rendered with an user", () => {
-    test("Then it should render two inputs text", async () => {
+describe("Given a Register page", () => {
+  describe("When it's rendered with a new user", () => {
+    test("Then it should call the navigate function", async () => {
       const username = "cristianito";
       const password = "theBest";
       const teamName = "manU";
