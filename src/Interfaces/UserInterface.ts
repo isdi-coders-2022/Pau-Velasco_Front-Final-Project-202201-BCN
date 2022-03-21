@@ -5,3 +5,8 @@ export interface User {
   players: string[];
   id: string;
 }
+
+export interface LoggedUser {
+  username: string;
+  password: string;
+}

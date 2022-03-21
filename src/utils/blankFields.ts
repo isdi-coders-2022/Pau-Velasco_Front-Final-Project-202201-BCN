@@ -1,4 +1,5 @@
 import { CreatedPlayer } from "../Interfaces/PlayerInterface";
+import { LoggedUser } from "../Interfaces/UserInterface";
 
 export const blankFields: CreatedPlayer = {
   name: "",
@@ -23,3 +24,8 @@ export const updateBlankFields = (player: any) => ({
   totalMatches: player.totalMatches,
   position: player.position,
 });
+
+export const userBlankFields: LoggedUser = {
+  username: "",
+  password: "",
+};
