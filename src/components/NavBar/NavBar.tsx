@@ -13,7 +13,7 @@ interface StyleProps {
 
 const ListItem = styled.li<StyleProps>`
   list-style: none;
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     display: flex;
     flex-direction: row;
   }
@@ -22,7 +22,7 @@ const ListItem = styled.li<StyleProps>`
     margin: 0;
     padding-left: 10px;
     display: none;
-    @media (min-width: 400px) {
+    @media (min-width: 450px) {
       flex-direction: column;
       justify-content: flex-start;
       width: 25%;
@@ -39,7 +39,7 @@ const ListItem = styled.li<StyleProps>`
   }
   & svg {
     color: ${(props) => props.color};
-    @media (min-width: 400px) {
+    @media (min-width: 450px) {
       padding-right: 20px;
       font-size: 40px;
     }
@@ -54,7 +54,7 @@ const ListContainer = styled.ul`
   margin: 0;
   padding: 0;
 
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     flex-direction: column;
     height: 300px;
     align-items: flex-start;
@@ -67,7 +67,7 @@ const NavigationContainer = styled.nav`
   min-width: 200px;
   display: flex;
   justify-content: center;
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     flex-direction: column;
     justify-content: flex-start;
     width: 25%;
