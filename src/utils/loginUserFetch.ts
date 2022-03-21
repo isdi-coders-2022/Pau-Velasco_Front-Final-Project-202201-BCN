@@ -12,12 +12,8 @@ export const loginUser = async (loginUser: LoggedUser): Promise<any> => {
     body: JSON.stringify(loginUser),
   });
 
-  try {
-    const token: Token = await response.json();
+  const token: Token = await response.json();
 
-    localStorage.setItem("token", token.token);
-    return token;
-  } catch (error) {
-    return error;
-  }
+  localStorage.setItem("token", token.token);
+  return token;
 };
