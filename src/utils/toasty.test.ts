@@ -1,6 +1,7 @@
 import {
   createFeedback,
   deleteFeedback,
+  newRegisterFeedback,
   notCreateFeedback,
   notUpdateFeedback,
   updateFeedback,
@@ -91,7 +92,7 @@ describe("Given a wrongRegisterFeedback function", () => {
 describe("Given a newRegisterFeedback function", () => {
   describe("When it's called", () => {
     test("Then it should call toast sucess", () => {
-      wrongRegisterFeedback();
+      newRegisterFeedback();
 
       expect(toast.success).toHaveBeenCalled();
     });
