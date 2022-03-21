@@ -114,4 +114,13 @@ export const handlers = [
         })
       )
   ),
+
+  rest.post(`${process.env.REACT_APP_API_RENDER}user/login`, (req, res, ctx) =>
+    res(
+      ctx.status(201),
+      ctx.json({
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+      })
+    )
+  ),
 ];

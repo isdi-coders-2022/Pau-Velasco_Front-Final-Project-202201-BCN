@@ -4,6 +4,7 @@ import {
   notCreateFeedback,
   notUpdateFeedback,
   updateFeedback,
+  wrongLoginFeedback,
 } from "./toasty";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
@@ -69,7 +70,7 @@ describe("Given a notUpdateFeedback function", () => {
 describe("Given a wrongLoginFeedback function", () => {
   describe("When it's called", () => {
     test("Then it should call toast error", () => {
-      notUpdateFeedback("hola");
+      wrongLoginFeedback();
 
       expect(toast.error).toHaveBeenCalled();
     });
