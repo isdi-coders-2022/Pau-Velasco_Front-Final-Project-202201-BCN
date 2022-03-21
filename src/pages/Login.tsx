@@ -82,8 +82,7 @@ const Login = () => {
 
     setFormData(userBlankFields);
     const returnedToken = await loginUser(data);
-    console.log(returnedToken);
-
+    console.log("RETURNED TOKEN", returnedToken);
     if (!returnedToken.error) {
       navigate("/");
     } else {

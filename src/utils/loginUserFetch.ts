@@ -13,7 +13,7 @@ export const loginUser = async (loginUser: LoggedUser): Promise<any> => {
   });
 
   const token: Token = await response.json();
-
+  console.log("salgo FETCH", token);
   localStorage.setItem("token", token.token);
   return token;
 };
