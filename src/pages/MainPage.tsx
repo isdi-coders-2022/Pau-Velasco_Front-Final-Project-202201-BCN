@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -23,6 +23,16 @@ const MainPageContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
+  & button {
+    margin: 30px;
+    border: none;
+    background-color: inherit;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fca311;
+    cursor: pointer;
+  }
+
   & h2 {
     font-weight: 800;
     width: 100%;
@@ -45,10 +55,10 @@ const PlayersContainer = styled.div`
 
 const MainPage = (): JSX.Element => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const user = useSelector((state: State) => state.user);
   const players = useSelector((state: State) => state.players);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -60,13 +70,36 @@ const MainPage = (): JSX.Element => {
     dispatch(loadPlayersThunk());
   }, [dispatch, navigate]);
 
+  const questionsPerPage = 6;
+  const pages = [];
+  const numPages = Math.ceil(players.length / questionsPerPage);
+
+  if (players.length > questionsPerPage) {
+    let currentOffset = 0;
+
+    for (let i = 0; i < numPages; i++) {
+      const pageQuestions = players.slice(0, currentOffset + questionsPerPage);
+      pages.push(pageQuestions);
+      currentOffset += questionsPerPage;
+    }
+  } else {
+    pages.push(players);
+  }
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  console.log(currentPage, numPages);
+
   return (
     <>
       <MainPageContainer>
         <h2>{user.teamName}</h2>
         <PlayersFilter />
         <PlayersContainer>
-          {players.map((player: Player) => (
+          {pages[currentPage].map((player: Player) => (
             <PlayerCard
               player={player}
               actionOnClick={() => {
@@ -77,6 +110,17 @@ const MainPage = (): JSX.Element => {
             />
           ))}
         </PlayersContainer>
+        {currentPage + 1 !== numPages && numPages !== 0 ? (
+          <button
+            onClick={() => {
+              nextPage();
+            }}
+          >
+            VER MÁS
+          </button>
+        ) : (
+          <></>
+        )}
       </MainPageContainer>
     </>
   );
