@@ -35,9 +35,14 @@ const playersReducer = (
       );
       break;
     case actionsTypes.filterPlayers:
-      newPlayers = players.filter(
-        (player) => player.position === (action as FilterPlayerAction).position
-      );
+      if ((action as FilterPlayerAction).position === "") {
+        newPlayers = [...(action as FilterPlayerAction).players];
+      } else {
+        newPlayers = (action as FilterPlayerAction).players.filter(
+          (player) =>
+            player.position === (action as FilterPlayerAction).position
+        );
+      }
       break;
     default:
       newPlayers = [...players];
