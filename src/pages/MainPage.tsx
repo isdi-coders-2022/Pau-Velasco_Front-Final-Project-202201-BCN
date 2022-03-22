@@ -19,7 +19,7 @@ const MainPageContainer = styled.div`
   min-height: 100vh;
   padding: 7px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
 
@@ -91,13 +91,13 @@ const MainPage = (): JSX.Element => {
     setCurrentPage(currentPage + 1);
   };
 
-  console.log(currentPage, numPages);
-
   return (
     <>
       <MainPageContainer>
-        <h2>{user.teamName}</h2>
-        <PlayersFilter />
+        <section>
+          <h2>{user.teamName}</h2>
+          <PlayersFilter />
+        </section>
         <PlayersContainer>
           {pages[currentPage].map((player: Player) => (
             <PlayerCard
