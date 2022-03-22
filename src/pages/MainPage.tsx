@@ -18,6 +18,10 @@ const MainPageContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   padding: 7px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   & h2 {
     font-weight: 800;
