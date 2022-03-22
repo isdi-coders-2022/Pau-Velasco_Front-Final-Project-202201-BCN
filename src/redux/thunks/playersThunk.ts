@@ -6,6 +6,7 @@ import { CreatedPlayer, Player } from "../../Interfaces/PlayerInterface";
 import {
   createPlayerAction,
   deletePlayerAction,
+  filterPlayersAction,
   loadPlayersAction,
   updatePlayerAction,
 } from "../actions/actionsCreator";
@@ -27,6 +28,22 @@ export const loadPlayersThunk =
 
     const players: Player[] = await response.json();
     dispatch(loadPlayersAction(players));
+  };
+
+export const filterPlayersThunk =
+  (filter: string) =>
+  async (
+    dispatch: ThunkDispatch<RootState, void, LoadPlayersAction>
+  ): Promise<void> => {
+    const response = await fetch(`${url}user/load-user-players`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    const players: Player[] = await response.json();
+    dispatch(filterPlayersAction(filter, players));
   };
 
 export const deletePlayerThunk =

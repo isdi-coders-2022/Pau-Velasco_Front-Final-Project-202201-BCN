@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import PlayerCard from "../components/PlayerCard/PlayerCard";
+import PlayersFilter from "../components/PlayersFilter/PlayersFilter";
 import { Player } from "../Interfaces/PlayerInterface";
 import { State } from "../Interfaces/StateInterface";
 import {
@@ -58,6 +59,7 @@ const MainPage = (): JSX.Element => {
     <>
       <MainPageContainer>
         <h2>{user.teamName}</h2>
+        <PlayersFilter />
         <PlayersContainer>
           {players.map((player: Player) => (
             <PlayerCard

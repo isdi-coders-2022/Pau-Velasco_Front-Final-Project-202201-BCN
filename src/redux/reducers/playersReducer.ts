@@ -6,6 +6,7 @@ import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface
 import { Action } from "../../Interfaces/ActionInterface";
 import { CreatePlayerAction } from "../../Interfaces/CreataePlayerActionInterface";
 import { UpdatePlayerAction } from "../../Interfaces/UpdatePlayerActionInterface";
+import { FilterPlayerAction } from "../../Interfaces/FilterPlayerActionInterface";
 
 const playersReducer = (
   players: Player[] = [],
@@ -32,6 +33,16 @@ const playersReducer = (
           ? (action as UpdatePlayerAction).player
           : player
       );
+      break;
+    case actionsTypes.filterPlayers:
+      if ((action as FilterPlayerAction).position === "") {
+        newPlayers = [...(action as FilterPlayerAction).players];
+      } else {
+        newPlayers = (action as FilterPlayerAction).players.filter(
+          (player) =>
+            player.position === (action as FilterPlayerAction).position
+        );
+      }
       break;
     default:
       newPlayers = [...players];
