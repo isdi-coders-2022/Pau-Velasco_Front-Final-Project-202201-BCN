@@ -1,24 +1,27 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { filterPlayersThunk } from "../../redux/thunks/playersThunk";
 
 const PlayersFilter = () => {
-  const blankFields = {
-    position: "",
-  };
+  const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState(blankFields);
+  const [position, setPosition] = useState("");
 
   const changeData = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value });
+    setPosition(event.target.value);
+    dispatch(filterPlayersThunk(position));
   };
 
   return (
-    <select id="position" value={formData.position} onChange={changeData}>
-      <option value="">POSICION</option>
-      <option value="portero">PORTERO</option>
-      <option value="cierre">CIERRE</option>
-      <option value="alero">ALERO</option>
-      <option value="pívote">PÍVOTE</option>
-    </select>
+    <form>
+      <select id="position" value={position} onChange={changeData}>
+        <option value="">TODOS</option>
+        <option value="portero">PORTERO</option>
+        <option value="cierre">CIERRE</option>
+        <option value="alero">ALERO</option>
+        <option value="pívote">PÍVOTE</option>
+      </select>
+    </form>
   );
 };
 
