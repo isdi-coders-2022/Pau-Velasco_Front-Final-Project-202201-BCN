@@ -32,7 +32,11 @@ export const updatePlayerAction = (player: Player): UpdatePlayerAction => ({
   player,
 });
 
-export const filterPlayersAction = (position: string): FilterPlayerAction => ({
-  type: actionsTypes.updatePlayer,
+export const filterPlayersAction = (
+  position: string,
+  players: Player[]
+): FilterPlayerAction => ({
+  type: actionsTypes.filterPlayers,
   position,
+  players,
 });
