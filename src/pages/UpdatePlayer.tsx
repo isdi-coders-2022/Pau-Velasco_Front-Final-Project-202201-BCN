@@ -12,23 +12,26 @@ import { notUpdateFeedback, updateFeedback } from "../utils/toasty";
 
 const UpdatePlayer = () => {
   const { id } = useParams();
+
   const players = useSelector((state: State) => state.players);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadPlayersThunk());
-  }, [dispatch]);
 
   const playerToUpdate = players.find((player: Player) => player.id === id);
 
   return (
-    <PlayerForm
-      heading={"edita un jugador de tu equipo"}
-      goodFeedback={updateFeedback}
-      badFeedback={notUpdateFeedback}
-      thunkFunction={updatePlayerThunk}
-      id={id}
-      playerToUpdate={playerToUpdate}
-    />
+    <>
+      {playerToUpdate ? (
+        <PlayerForm
+          heading={"edita un jugador de tu equipo"}
+          goodFeedback={updateFeedback}
+          badFeedback={notUpdateFeedback}
+          thunkFunction={updatePlayerThunk}
+          id={id}
+          playerToUpdate={playerToUpdate}
+        />
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 
