@@ -25,6 +25,7 @@ const MainPageContainer = styled.div`
 
   & h2 {
     font-weight: 800;
+    width: 100%;
     font-size: 18px;
     line-height: 40px;
     height: 40px;
