@@ -213,6 +213,7 @@ const PlayerForm = ({
   playerToUpdate,
 }: PlayerFormProps): JSX.Element => {
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(
     id ? updateBlankFields(playerToUpdate) : blankFields
