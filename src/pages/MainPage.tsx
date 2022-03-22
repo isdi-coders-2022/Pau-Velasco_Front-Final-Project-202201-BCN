@@ -85,8 +85,8 @@ const MainPage = (): JSX.Element => {
   } else {
     pages.push(players);
   }
-  const [currentPage, setCurrentPage] = useState(0);
 
+  const [currentPage, setCurrentPage] = useState(0);
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
   };
