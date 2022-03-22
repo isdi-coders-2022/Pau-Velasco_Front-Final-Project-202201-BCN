@@ -107,10 +107,6 @@ const InputNumberContainer = styled.div<StyleProps>`
   & label {
     margin-left: ${(props) => props.marginLabel || "30px"};
   }
-  & select {
-    margin-left: 10px;
-    border-radius: 1px;
-  }
   & input {
     width: 70px;
     max-width: 320px;
@@ -122,6 +118,8 @@ const InputNumberContainer = styled.div<StyleProps>`
     border: none;
     height: 30px;
     font-size: 18px;
+    margin-left: 10px;
+    border-radius: 1px;
   }
 `;
 
