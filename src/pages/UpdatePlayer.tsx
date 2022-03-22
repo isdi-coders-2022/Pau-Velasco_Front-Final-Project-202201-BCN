@@ -3,10 +3,7 @@ import { useParams } from "react-router-dom";
 import PlayerForm from "../components/PlayerForm/PlayerForm";
 import { Player } from "../Interfaces/PlayerInterface";
 import { State } from "../Interfaces/StateInterface";
-import {
-  loadPlayersThunk,
-  updatePlayerThunk,
-} from "../redux/thunks/playersThunk";
+import { updatePlayerThunk } from "../redux/thunks/playersThunk";
 import { notUpdateFeedback, updateFeedback } from "../utils/toasty";
 
 const UpdatePlayer = () => {
