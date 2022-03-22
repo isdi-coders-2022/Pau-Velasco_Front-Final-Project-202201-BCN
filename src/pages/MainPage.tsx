@@ -39,7 +39,7 @@ const MainPageContainer = styled.div`
 const PlayersContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-around;
 `;
 
 const MainPage = (): JSX.Element => {
