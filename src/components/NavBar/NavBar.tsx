@@ -63,7 +63,7 @@ const ListContainer = styled.ul`
 `;
 
 const NavigationContainer = styled.nav`
-  height: 50px;
+  min-height: 100vh;
   min-width: 200px;
   display: flex;
   justify-content: center;
