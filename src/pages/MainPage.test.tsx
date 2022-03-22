@@ -93,4 +93,21 @@ describe("Given a MainPage page", () => {
       expect(findCristiano).not.toBeInTheDocument();
     });
   });
+
+  describe("When the user click the 'VER MAS' button", () => {
+    test("Then it should remove the button from the screen", async () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <MainPage />
+          </Provider>
+        </BrowserRouter>
+      );
+
+      const findVerMas = await screen.findByRole("button", { name: "VER MÁS" });
+      userEvent.click(findVerMas);
+
+      expect(findVerMas).not.toBeInTheDocument();
+    });
+  });
 });
