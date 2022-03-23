@@ -173,6 +173,7 @@ export const handlers = [
 
   rest.delete(
     `${process.env.REACT_APP_API_RENDER}player/delete/1`,
+
     (req, res, ctx) =>
       res(
         ctx.status(200),
@@ -255,5 +256,14 @@ export const handlers = [
           teamName: "manU",
         })
       )
+  ),
+];
+
+export const errorHadlers = [
+  rest.delete(
+    `${process.env.REACT_APP_API_RENDER}player/delete/*`,
+
+    (req, res, ctx) =>
+      res(ctx.status(404), ctx.json({ error: "Can't delete the player" }))
   ),
 ];
