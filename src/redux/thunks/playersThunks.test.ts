@@ -1,3 +1,5 @@
+import { errorHadlers } from "../../mocks/handlers";
+import { server } from "../../mocks/server";
 import {
   createPlayerThunk,
   deletePlayerThunk,
@@ -183,6 +185,23 @@ describe("Given a deletePlayer thunk", () => {
       await deletedPlayer(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it's called with wrong player id", () => {
+    test("Then it should call the dispatch with an action", async () => {
+      server.use(...errorHadlers);
+
+      const dispatch = jest.fn();
+      const action = {
+        type: "delete-player",
+        id: "12",
+      };
+
+      const deletedPlayer = deletePlayerThunk(action.id);
+      await deletedPlayer(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 });
