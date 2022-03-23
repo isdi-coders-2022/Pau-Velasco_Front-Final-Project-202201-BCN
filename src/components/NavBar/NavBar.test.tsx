@@ -1,10 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar";
 
 const mockLocalStorage = {
   removeItem: () => jest.fn(),
+  getItem: () => ({ token: "fdsa" }),
 };
 Object.defineProperty(window, "localStorage", { value: mockLocalStorage });
 
@@ -41,5 +42,21 @@ describe("Given a NavBar component", () => {
     expect(findLi[0]).toBeInTheDocument();
     expect(findLi[1]).toBeInTheDocument();
     expect(findLi[2]).toBeInTheDocument();
+  });
+
+  describe("When it's rendered on create player page", () => {
+    test("Then it should change the add player icon color to #fca311", async () => {
+      render(
+        <BrowserRouter>
+          <NavBar />
+        </BrowserRouter>
+      );
+
+      const findIcon = screen.getByRole("link", { name: /create player/i });
+      userEvent.click(findIcon);
+      const img = await screen.findAllByRole("listitem");
+
+      expect(img[2]).toHaveAttribute("color", "#fca311");
+    });
   });
 });
