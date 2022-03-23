@@ -1,5 +1,6 @@
 import { faPlayCircle, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import {
+  faCircleInfo,
   faFutbol,
   faLocationCrosshairs,
   faPencil,
@@ -173,8 +174,15 @@ const PlayerCard = ({
             </li>
           </ul>
           <Options>
-            <Link to={`update-player/${id}`}>
+            <Link to={{ pathname: `/main-page/update-player/${id}` }}>
               <FontAwesomeIcon icon={faPencil} />
+            </Link>
+            <Link
+              to={{
+                pathname: `/main-page/detail-player/${id}`,
+              }}
+            >
+              <FontAwesomeIcon icon={faCircleInfo} title="info" />
             </Link>
             <FontAwesomeIcon
               icon={faTrashCan}

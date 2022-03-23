@@ -22,6 +22,7 @@ interface StyleProps {
 }
 
 const FormContainer = styled.div`
+  margin-top: 50px;
   background: linear-gradient(193.32deg, #14213d 45.83%, #000000 100%);
   width: 100%;
   min-height: 100vh;
