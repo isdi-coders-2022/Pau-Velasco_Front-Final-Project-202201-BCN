@@ -1,5 +1,6 @@
 import { faPlayCircle, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import {
+  faCircleInfo,
   faFutbol,
   faLocationCrosshairs,
   faPencil,
@@ -117,11 +118,13 @@ const Options = styled.div`
 
 interface PlayerCardProps {
   actionOnClick: () => void;
+  detailOnClick?: () => void;
   player: Player;
 }
 
 const PlayerCard = ({
   actionOnClick,
+  detailOnClick,
   player: {
     name,
     number,
@@ -176,6 +179,7 @@ const PlayerCard = ({
             <Link to={`update-player/${id}`}>
               <FontAwesomeIcon icon={faPencil} />
             </Link>
+            <FontAwesomeIcon icon={faCircleInfo} onClick={detailOnClick} />
             <FontAwesomeIcon
               icon={faTrashCan}
               onClick={actionOnClick}
