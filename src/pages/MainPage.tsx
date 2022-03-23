@@ -111,9 +111,6 @@ const MainPage = (): JSX.Element => {
                 dispatch(deletePlayerThunk(player.id));
                 deleteFeedback(player.name);
               }}
-              detailOnClick={() => {
-                navigate(`/main-page/detail-player/${player.id}`);
-              }}
               key={player.id}
             />
           ))}
