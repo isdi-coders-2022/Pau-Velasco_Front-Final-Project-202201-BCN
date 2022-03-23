@@ -109,7 +109,7 @@ const NavBar = (): JSX.Element => {
           <ListItem
             color={location.pathname === "/create-player" ? "#fca311" : "#000"}
           >
-            <Link to="/create-player">
+            <Link to="/create-player" title="create player">
               <FontAwesomeIcon icon={faUserPlus} />
               <p>añadir jugador</p>
             </Link>
