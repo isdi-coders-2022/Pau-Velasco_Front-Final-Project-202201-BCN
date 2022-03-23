@@ -3,6 +3,7 @@ import { ThunkDispatch } from "redux-thunk";
 import { DeletePlayerAction } from "../../Interfaces/DeletePlayerActionInterface";
 import { LoadPlayersAction } from "../../Interfaces/LoadPlayersActionInterface";
 import { CreatedPlayer, Player } from "../../Interfaces/PlayerInterface";
+import { dataForm } from "../../utils/dataForm";
 import {
   createPlayerAction,
   deletePlayerAction,
@@ -66,16 +67,7 @@ export const deletePlayerThunk =
 export const createPlayerThunk =
   (player: CreatedPlayer) =>
   async (dispatch: Dispatch): Promise<any> => {
-    const data = new FormData();
-    data.append("photo", player.photo);
-    data.append("name", player.name);
-    data.append("number", player.number);
-    data.append("goals", player.goals);
-    data.append("assists", player.assists);
-    data.append("yellowCards", player.yellowCards);
-    data.append("redCards", player.redCards);
-    data.append("totalMatches", player.totalMatches);
-    data.append("position", player.position);
+    const data = dataForm(player);
 
     const response = await fetch(`${url}player/create-player`, {
       method: "POST",
@@ -97,16 +89,7 @@ export const createPlayerThunk =
 export const updatePlayerThunk =
   (player: CreatedPlayer, id: any) =>
   async (dispatch: Dispatch): Promise<any> => {
-    const data = new FormData();
-    data.append("photo", player.photo);
-    data.append("name", player.name);
-    data.append("number", player.number);
-    data.append("goals", player.goals);
-    data.append("assists", player.assists);
-    data.append("yellowCards", player.yellowCards);
-    data.append("redCards", player.redCards);
-    data.append("totalMatches", player.totalMatches);
-    data.append("position", player.position);
+    const data = dataForm(player);
 
     const response = await fetch(`${url}player/update/${id}`, {
       method: "PUT",
