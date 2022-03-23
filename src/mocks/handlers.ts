@@ -266,10 +266,12 @@ export const errorHadlers = [
     (req, res, ctx) =>
       res(ctx.status(404), ctx.json({ error: "Can't delete the player" }))
   ),
+
   rest.get(
     `${process.env.REACT_APP_API_RENDER}user/load-user-players`,
     (req, res, ctx) => res(ctx.status(404), ctx.json([undefined]))
   ),
+
   rest.post(
     `${process.env.REACT_APP_API_RENDER}user/register`,
     (req, res, ctx) =>
@@ -279,5 +281,9 @@ export const errorHadlers = [
           error: "Can't register",
         })
       )
+  ),
+
+  rest.post(`${process.env.REACT_APP_API_RENDER}user/login`, (req, res, ctx) =>
+    res(ctx.status(404), ctx.json({ error: "user not found" }))
   ),
 ];
