@@ -12,7 +12,6 @@ const CreatePlayer = () => {
 
     if (!token) {
       navigate("/login");
-      return;
     }
   }, [navigate]);
 
