@@ -101,4 +101,38 @@ describe("Given a playersReducer reducer", () => {
       expect(newPlayers).toContain(updatedPlayer);
     });
   });
+
+  describe("When it receives a list of players and an action with filter-player type, the array with all the players, and the position to filter", () => {
+    test("Then it should return just the players with the position in the action", () => {
+      const players = generateRandomPlayers(20);
+      const position = "cierre";
+
+      const action = {
+        type: "filter-players",
+        position,
+        players,
+      };
+
+      const filteredPlayers = playersReducer(players, action);
+
+      expect(filteredPlayers[0]).toHaveProperty("position", position);
+    });
+  });
+
+  describe("When it receives a list of players and an action with filter-player type, the array with all the players, and an empty position to filter", () => {
+    test("Then it should return all players with the position in the action", () => {
+      const players = generateRandomPlayers(20);
+      const position = "";
+
+      const action = {
+        type: "filter-players",
+        position,
+        players,
+      };
+
+      const filteredPlayers = playersReducer(players, action);
+
+      expect(filteredPlayers).toEqual(players);
+    });
+  });
 });

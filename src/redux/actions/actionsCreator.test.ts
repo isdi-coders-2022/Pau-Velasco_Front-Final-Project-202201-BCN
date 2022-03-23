@@ -9,6 +9,7 @@ import { generateRandomUser } from "../../mocks/userFactory";
 import {
   createPlayerAction,
   deletePlayerAction,
+  filterPlayersAction,
   loadPlayersAction,
   loadUserAction,
   updatePlayerAction,
@@ -90,6 +91,24 @@ describe("Given a update-player action", () => {
       };
 
       const action = updatePlayerAction(player);
+
+      expect(action).toEqual(expectedACtion);
+    });
+  });
+});
+
+describe("Given a filterPlayerAction action", () => {
+  describe("When it receives the position and the players", () => {
+    test("Then it should return an action with type filter-player, the filtered players and the position", () => {
+      const players: Player[] = generateRandomPlayers(3);
+
+      const expectedACtion = {
+        type: "filter-players",
+        position: "portero",
+        players,
+      };
+
+      const action = filterPlayersAction(expectedACtion.position, players);
 
       expect(action).toEqual(expectedACtion);
     });
