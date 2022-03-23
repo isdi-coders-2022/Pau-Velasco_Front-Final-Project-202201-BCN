@@ -64,9 +64,12 @@ const ListContainer = styled.ul`
 
 const NavigationContainer = styled.nav`
   min-height: 50px;
-  min-width: 200px;
+  width: 100vw;
   display: flex;
   justify-content: center;
+  position: fixed;
+  background-color: #fff;
+  z-index: 99;
   @media (min-width: 450px) {
     flex-direction: column;
     justify-content: flex-start;

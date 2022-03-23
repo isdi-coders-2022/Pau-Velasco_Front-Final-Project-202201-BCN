@@ -12,6 +12,7 @@ import {
 import { deleteFeedback } from "../utils/toasty";
 
 const DetailContainer = styled.div`
+  margin-top: 50px;
   background: linear-gradient(193.32deg, #14213d 45.83%, #000000 100%);
   width: 100%;
   height: 100vh;
