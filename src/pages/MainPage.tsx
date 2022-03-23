@@ -19,7 +19,7 @@ const MainPageContainer = styled.div`
   min-height: 100vh;
   padding: 7px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-direction: column;
   align-items: center;
 
@@ -32,6 +32,16 @@ const MainPageContainer = styled.div`
     color: #fca311;
     cursor: pointer;
   }
+`;
+
+const PlayersContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+const HeaderContainer = styled.section`
+  width: 100%;
 
   & h2 {
     font-weight: 800;
@@ -45,12 +55,6 @@ const MainPageContainer = styled.div`
     margin-bottom: 30px;
     text-transform: uppercase;
   }
-`;
-
-const PlayersContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
 `;
 
 const MainPage = (): JSX.Element => {
@@ -94,10 +98,10 @@ const MainPage = (): JSX.Element => {
   return (
     <>
       <MainPageContainer>
-        <section>
+        <HeaderContainer>
           <h2>{user.teamName}</h2>
           <PlayersFilter />
-        </section>
+        </HeaderContainer>
         <PlayersContainer>
           {pages[currentPage].map((player: Player) => (
             <PlayerCard
