@@ -1,5 +1,4 @@
 import { rest } from "msw";
-import { generateRandomPlayers } from "./playerFactory";
 
 export const handlers = [
   rest.get(
