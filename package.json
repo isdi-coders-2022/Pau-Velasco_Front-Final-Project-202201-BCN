@@ -19,6 +19,8 @@
     "@types/react-dom": "^17.0.13",
     "@types/styled-components": "^5.1.24",
     "bson-objectid": "^2.0.2",
+    "cypress": "6.2.0",
+    "eslint-plugin-cypress": "2.11.2",
     "fishery": "^2.2.2",
     "jest": "^27.5.1",
     "msw": "^0.39.1",
@@ -40,7 +42,9 @@
     "test": "react-scripts test",
     "coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "eslintConfig": {
     "extends": [
