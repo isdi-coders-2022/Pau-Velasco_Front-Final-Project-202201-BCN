@@ -270,4 +270,14 @@ export const errorHadlers = [
     `${process.env.REACT_APP_API_RENDER}user/load-user-players`,
     (req, res, ctx) => res(ctx.status(404), ctx.json([undefined]))
   ),
+  rest.post(
+    `${process.env.REACT_APP_API_RENDER}user/register`,
+    (req, res, ctx) =>
+      res(
+        ctx.status(404),
+        ctx.json({
+          error: "Can't register",
+        })
+      )
+  ),
 ];
