@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { errorHadlers } from "../mocks/handlers";
+import { server } from "../mocks/server";
 import store from "../redux/store";
 import CreatePlayer from "./CreatePlayer";
 
@@ -113,6 +115,49 @@ describe("Given a CreatePlayer page", () => {
       expect(submitButton).toBeDisabled();
 
       const findToast = await screen.findByText(`Player ${nameTest} created`);
+      expect(findToast).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's rendered with a new player and the user click on submidt", () => {
+    test("Then it should reset the form and show the created player toast", async () => {
+      server.use(...errorHadlers);
+
+      const numberTest = "1";
+      const nameTest = "Cristiano";
+      const positionTest = "cierre";
+      const file = new File(["hello"], "hello.png", { type: "image/png" });
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <CreatePlayer />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const inputsNumber = screen.getAllByRole("spinbutton");
+      inputsNumber.forEach((input) => userEvent.type(input, numberTest));
+
+      const inputName = screen.getByRole("textbox");
+      userEvent.type(inputName, nameTest);
+
+      const selectPosition = screen.getByRole("combobox");
+      userEvent.selectOptions(selectPosition, positionTest);
+
+      const addFile = screen.getByLabelText("FOTO");
+      userEvent.upload(addFile, file);
+
+      const submitButton = screen.getByRole("button", { name: "CREAR" });
+      userEvent.click(submitButton);
+
+      expect(selectPosition).toHaveValue("");
+      expect(inputName).toHaveValue("");
+      expect(submitButton).toBeDisabled();
+
+      const findToast = await screen.findByText(
+        `Can't create ${nameTest} player`
+      );
       expect(findToast).toBeInTheDocument();
     });
   });

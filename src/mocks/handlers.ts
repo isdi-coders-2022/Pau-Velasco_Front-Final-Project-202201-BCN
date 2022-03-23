@@ -286,4 +286,10 @@ export const errorHadlers = [
   rest.post(`${process.env.REACT_APP_API_RENDER}user/login`, (req, res, ctx) =>
     res(ctx.status(404), ctx.json({ error: "user not found" }))
   ),
+
+  rest.post(
+    `${process.env.REACT_APP_API_RENDER}player/create-player`,
+    (req, res, ctx) =>
+      res(ctx.status(404), ctx.json({ error: "Can't create the player" }))
+  ),
 ];

@@ -253,11 +253,13 @@ const PlayerForm = ({
         ? thunkFunction(data)
         : thunkFunction(data, id)
     );
+    console.log(returnDispatch);
 
     if (!returnDispatch.error) {
       goodFeedback(formData.name);
       navigate("/");
     } else {
+      console.log("ENTORO");
       badFeedback(formData.name);
     }
   };
