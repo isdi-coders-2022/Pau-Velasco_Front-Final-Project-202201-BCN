@@ -266,4 +266,8 @@ export const errorHadlers = [
     (req, res, ctx) =>
       res(ctx.status(404), ctx.json({ error: "Can't delete the player" }))
   ),
+  rest.get(
+    `${process.env.REACT_APP_API_RENDER}user/load-user-players`,
+    (req, res, ctx) => res(ctx.status(404), ctx.json([undefined]))
+  ),
 ];
