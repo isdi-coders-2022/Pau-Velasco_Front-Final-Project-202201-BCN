@@ -118,13 +118,11 @@ const Options = styled.div`
 
 interface PlayerCardProps {
   actionOnClick: () => void;
-  detailOnClick?: () => void;
   player: Player;
 }
 
 const PlayerCard = ({
   actionOnClick,
-  detailOnClick,
   player: {
     name,
     number,
@@ -176,10 +174,16 @@ const PlayerCard = ({
             </li>
           </ul>
           <Options>
-            <Link to={`update-player/${id}`}>
+            <Link to={{ pathname: `/main-page/update-player/${id}` }}>
               <FontAwesomeIcon icon={faPencil} />
             </Link>
-            <FontAwesomeIcon icon={faCircleInfo} onClick={detailOnClick} />
+            <Link
+              to={{
+                pathname: `/main-page/detail-player/${id}`,
+              }}
+            >
+              <FontAwesomeIcon icon={faCircleInfo} title="info" />
+            </Link>
             <FontAwesomeIcon
               icon={faTrashCan}
               onClick={actionOnClick}
