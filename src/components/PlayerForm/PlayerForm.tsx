@@ -34,6 +34,9 @@ const FormContainer = styled.div`
   font-weight: 100;
   line-height: 18px;
   padding: 20px;
+  @media (min-width: 450px) {
+    margin-top: 0;
+  }
 
   & input {
     height: 30px;

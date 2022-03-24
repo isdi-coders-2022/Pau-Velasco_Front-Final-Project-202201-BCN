@@ -23,6 +23,9 @@ const MainPageContainer = styled.div`
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
+  @media (min-width: 450px) {
+    margin-top: 0;
+  }
 
   & button {
     margin: 30px;

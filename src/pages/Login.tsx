@@ -18,6 +18,9 @@ const LoginContainer = styled.section`
   font-size: 18px;
   font-weight: 100;
   line-height: 18px;
+  @media (min-width: 450px) {
+    margin-top: 0;
+  }
 
   & form {
     justify-content: space-around;
