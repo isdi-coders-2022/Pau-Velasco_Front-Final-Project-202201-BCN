@@ -132,7 +132,7 @@ const Register = () => {
               />
             </div>
           </div>
-          <GenericButton text="LOGIN" disabled={isInvalid} />
+          <GenericButton text="REGISTER" disabled={isInvalid} />
         </form>
         <p>
           ya estás registrado? logueate <Link to="/login">aquí</Link>
