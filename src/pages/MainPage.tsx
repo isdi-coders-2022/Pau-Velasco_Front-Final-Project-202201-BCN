@@ -95,6 +95,12 @@ const MainPage = (): JSX.Element => {
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
   };
+  const questionsInPage = pages[currentPage].length;
+  const restPage = () => {
+    if ((questionsInPage - 1) % 6 === 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <>
@@ -108,6 +114,7 @@ const MainPage = (): JSX.Element => {
             <PlayerCard
               player={player}
               actionOnClick={() => {
+                restPage();
                 dispatch(deletePlayerThunk(player.id));
                 deleteFeedback(player.name);
               }}
