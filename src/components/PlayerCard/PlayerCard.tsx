@@ -12,7 +12,7 @@ import styled from "styled-components";
 import { Player } from "../../Interfaces/PlayerInterface";
 
 const CardContainer = styled.section`
-  margin-top: 24px;
+  margin: 24px 24px 0 24px;
 `;
 
 const HeaderContainer = styled.div`

@@ -20,7 +20,7 @@ const MainPageContainer = styled.div`
   min-height: 100vh;
   padding: 7px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   @media (min-width: 450px) {
