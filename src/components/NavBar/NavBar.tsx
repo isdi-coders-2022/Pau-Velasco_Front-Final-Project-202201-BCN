@@ -76,6 +76,7 @@ const NavigationContainer = styled.nav`
     width: 25%;
     min-height: 100vh;
     background-color: #e5e5e5;
+    position: unset;
   }
 `;
 

@@ -161,6 +161,18 @@ describe("Given a loadPlayersThunk function", () => {
             photo: "http://placeimg.com/640/480",
             id: "12",
           },
+          {
+            name: "Rodrigo Moreno",
+            number: 90,
+            goals: 172,
+            assists: 34,
+            yellowCards: 5,
+            redCards: 17,
+            totalMatches: 21,
+            position: "Alero",
+            photo: "http://placeimg.com/640/480",
+            id: "13",
+          },
         ],
       };
 
@@ -475,6 +487,18 @@ describe("Given a filterPlayersThunk function", () => {
           position: "Alero",
           photo: "http://placeimg.com/640/480",
           id: "12",
+        },
+        {
+          name: "Rodrigo Moreno",
+          number: 90,
+          goals: 172,
+          assists: 34,
+          yellowCards: 5,
+          redCards: 17,
+          totalMatches: 21,
+          position: "Alero",
+          photo: "http://placeimg.com/640/480",
+          id: "13",
         },
       ];
       const position = "cierre";

@@ -18,6 +18,9 @@ const DetailContainer = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+  @media (min-width: 450px) {
+    margin-top: 0;
+  }
 `;
 
 const DetailPage = () => {

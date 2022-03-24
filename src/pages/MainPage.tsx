@@ -23,6 +23,9 @@ const MainPageContainer = styled.div`
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
+  @media (min-width: 450px) {
+    margin-top: 0;
+  }
 
   & button {
     margin: 30px;
@@ -95,6 +98,12 @@ const MainPage = (): JSX.Element => {
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
   };
+  const questionsInPage = pages[currentPage].length;
+  const restPage = () => {
+    if ((questionsInPage - 1) % 6 === 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <>
@@ -108,6 +117,7 @@ const MainPage = (): JSX.Element => {
             <PlayerCard
               player={player}
               actionOnClick={() => {
+                restPage();
                 dispatch(deletePlayerThunk(player.id));
                 deleteFeedback(player.name);
               }}

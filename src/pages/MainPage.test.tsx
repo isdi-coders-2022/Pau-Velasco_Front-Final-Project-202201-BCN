@@ -106,8 +106,37 @@ describe("Given a MainPage page", () => {
 
       const findVerMas = await screen.findByRole("button", { name: "VER MÁS" });
       userEvent.click(findVerMas);
+      userEvent.click(findVerMas);
 
       expect(findVerMas).not.toBeInTheDocument();
+    });
+  });
+
+  describe("When the user click the 'VER MAS' button for two times and delete the first player", () => {
+    test("Then it should show a toast with the message 'Player Cristiano deleted'", async () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <MainPage />
+          </Provider>
+        </BrowserRouter>
+      );
+      const findCristiano = screen.getByText(/Player Cristiano deleted/i);
+
+      const findVerMas = await screen.findByRole("button", {
+        name: "VER MÁS",
+      });
+      userEvent.click(findVerMas);
+
+      const findVerMas2 = await screen.findByRole("button", {
+        name: "VER MÁS",
+      });
+      userEvent.click(findVerMas2);
+
+      const findDelete = await screen.findAllByRole("img", { name: "trash" });
+      userEvent.click(findDelete[0]);
+
+      expect(findCristiano).toBeInTheDocument();
     });
   });
 });
