@@ -76,7 +76,8 @@
       "!src/index.tsx",
       "!src/reportWebVitals.ts",
       "!src/setupTests.ts",
-      "!src/react-app-env.d.ts"
+      "!src/react-app-env.d.ts",
+      "!src/Interfaces/*.ts"
     ]
   }
 }
